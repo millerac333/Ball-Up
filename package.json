@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.7.3",
+    "install": "^0.12.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "storm-react-diagrams": "^5.2.1",
+    "uikit": "^3.0.0-dev.073cb46"
   },
   "scripts": {
     "start": "react-scripts start",
