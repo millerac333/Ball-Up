@@ -1,4 +1,4 @@
-import s from "../settings";
+import settings from "../settings";
 import GeneralManager from "./GeneralManager";
 
 export default Object.create(GeneralManager, {

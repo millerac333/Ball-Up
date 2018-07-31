@@ -1,5 +1,5 @@
 import settings from "../settings";
-import GenrealManager from "./GeneralManager";
+import GeneralManager from "./GeneralManager";
 
 export default Object.create(GeneralManager, {
   get: {
