@@ -1,28 +1,9 @@
-.App {
-  text-align: center;
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
 }

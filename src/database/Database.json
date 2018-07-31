@@ -1,12 +1,12 @@
 {
   "ballers": [
     {
-      "username": "Test User 0",
+      "ballername": "Test User 0",
       "password": "password",
       "ballerId": "0"
     },
     {
-      "username": "Test User 1",
+      "ballername": "Test User 1",
       "password": "password",
       "ballerId": "1"
     }
@@ -29,16 +29,16 @@
   ],
   "games": [
     {
-      "creatorUserId": "0",
-      "JoinUserId": "1",
+      "creatorBallerId": "0",
+      "joinedBallerId": "1",
       "locationId": "0",
       "duration": "12PM-2PM",
       "courtSize": true,
       "gameId": "0"
     },
     {
-      "creatorUserId": "1",
-      "JoinUserId": "0",
+      "creatorBallerId": "1",
+      "joinedBallerId": "0",
       "locationId": "1",
       "duration": "12PM-2PM",
       "courtSize": false,
@@ -49,12 +49,12 @@
     {
       "joinedGameId": "0",
       "gameId": "0",
-      "JoinUserId": "1"
+      "joinedBallerId": "1"
     },
     {
       "joinedGameId": "1",
       "gameId": "1",
-      "JoinUserId": "0"
+      "joinedBallerId": "0"
     }
   ]
 }
