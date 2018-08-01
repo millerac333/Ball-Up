@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import GamesManager from "../modules/GamesManager";
+import JoinedGamesManager from "../modules/JoinedGamesManager";
+import BallersManager from "../modules/BallersManager";
+import CourtsManager from "../modules/CourtsManager";
+import Login from "./login/Login";
 
 export default class ApplicationViews extends Component {
   state = {
@@ -50,7 +55,7 @@ export default class ApplicationViews extends Component {
 
   componentDidMount() {
     const _state = {};
-    GameManager.listWithCaretaker()
+    GamesManager.listWithCaretaker()
       .then(games => (_state.games = games))
       .then(() => BallersManager.all())
       .then(ballers => (_state.ballers = ballers))

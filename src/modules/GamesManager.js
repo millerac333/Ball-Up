@@ -1,7 +1,7 @@
 import settings from "../settings";
 import GeneralManager from "./GeneralManager";
 
-export default Object.create(GeneralManager, {
+export default Object.create(GamesManager, {
   get: {
     value: function(id) {
       return this.getSingle("games", id);
