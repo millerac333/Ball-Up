@@ -15,14 +15,14 @@ const GeneralManager = Object.create(
         );
       }
     },
-    deleteItem: {
+    delete: {
       value: (resource, id) => {
         return fetch(`${settings.remoteURL}/${resource}/${id}`, {
           method: "DELETE"
         });
       }
     },
-    patchItem: {
+    patch: {
       value: function(resource, resourceObject) {
         return fetch(`${settings.remoteURL}/${resource}`, {
           method: "PATCH",
@@ -33,7 +33,7 @@ const GeneralManager = Object.create(
         }).then(e => e.json());
       }
     },
-    postItem: {
+    post: {
       value: function(resource, resourceObject) {
         return fetch(`${settings.remoteURL}/${resource}`, {
           method: "POST",
