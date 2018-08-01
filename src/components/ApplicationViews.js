@@ -35,30 +35,30 @@ export default class ApplicationViews extends Component {
         joinedGames: joinedGames
       })
     );
-  addGames = games =>
-    GamesManager.addAndList(game).then(games =>
-      this.setState({
-        games: games
-      })
-    );
-  addJoinedGames = joinedGames =>
-    GamesManager.addAndList(joinedGame).then(joinedGames =>
-      this.setState({
-        joinedGames: joinedGames
-      })
-    );
-  addBallers = ballers =>
-    BallersManager.addAndList(baller).then(ballers =>
-      this.setState({
-        ballers: ballers
-      })
-    );
-  addCourts = courts =>
-    CourtsManager.addAndList(court).then(courts =>
-      this.setState({
-        courts: courts
-      })
-    );
+  // addGames = games =>
+  //   GamesManager.addAndList(game).then(games =>
+  //     this.setState({
+  //       games: games
+  //     })
+  //   );
+  // addJoinedGames = joinedGames =>
+  //   GamesManager.addAndList(joinedGame).then(joinedGames =>
+  //     this.setState({
+  //       joinedGames: joinedGames
+  //     })
+  //   );
+  // addBallers = ballers =>
+  //   BallersManager.addAndList(baller).then(ballers =>
+  //     this.setState({
+  //       ballers: ballers
+  //     })
+  //   );
+  // addCourts = courts =>
+  //   CourtsManager.addAndList(court).then(courts =>
+  //     this.setState({
+  //       courts: courts
+  //     })
+  //   );
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
 
@@ -205,9 +205,10 @@ export default class ApplicationViews extends Component {
                   courts={this.state.courts}
                 />
               );
-            } else {
-              return <Redirect to="/login" />;
             }
+            // } else {
+            //   return <Redirect to="/login" />;
+            // }
           }}
         />
 
