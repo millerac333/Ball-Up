@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
+//I will eventually refactor form with bloomer//
 import { Field } from "bloomer";
 
 export default class Login extends Component {

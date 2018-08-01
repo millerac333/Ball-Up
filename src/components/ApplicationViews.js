@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import BallersList from "./ballers/BallersList";
+import CourtsList from "./courts/CourtsList";
+import CourtDetail from "./courts/CourtDetail";
+import CourtForm from "./courts/CourtForm";
+import GamesList from "./games/GamesList";
+import GameDetail from "./games/GameDetail";
+import GameForm from "./games/GameForm";
+import GamesJoinedList from "./games-joined/GamesJoinedList";
+import GameJoinedDetail from "./games-joined/GameJoinedDetail";
 import GamesManager from "../modules/GamesManager";
 import JoinedGamesManager from "../modules/JoinedGamesManager";
 import BallersManager from "../modules/BallersManager";
@@ -15,9 +24,9 @@ export default class ApplicationViews extends Component {
   };
 
   deleteGames = id =>
-    GamesManager.removeAndList(id).then(animals =>
+    GamesManager.removeAndList(id).then(games =>
       this.setState({
-        animals: animals
+        games: games
       })
     );
   deleteJoinedGames = id =>
@@ -76,10 +85,34 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
+          path="/courts/:courtsId(\d+)"
+          render={props => {
+            return (
+              <CourtDetail
+                {...props}
+                deleteCourts={this.deleteCourts}
+                gamesJoined={this.state.courts}
+              />
+            );
+          }}
+        />
+        <Route
           exact
           path="/courts"
           render={props => {
             return <CourtsList courts={this.state.courts} />;
+          }}
+        />
+        <Route
+          path="/courts/new"
+          render={props => {
+            return (
+              <CourtForm
+                {...props}
+                addCourt={this.addCourt}
+                ballers={this.state.ballers}
+              />
+            );
           }}
         />
 
@@ -115,7 +148,7 @@ export default class ApplicationViews extends Component {
               <GameForm
                 {...props}
                 addGame={this.addGame}
-                ballers={this.state.employees}
+                ballers={this.state.ballers}
               />
             );
           }}
@@ -141,7 +174,7 @@ export default class ApplicationViews extends Component {
               <GameJoinedDetail
                 {...props}
                 deleteGameJoined={this.deleteGameJoined}
-                gamesJoined={this.state.games}
+                gamesJoined={this.state.gamesJoined}
               />
             );
           }}
