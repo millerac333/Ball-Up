@@ -47,7 +47,7 @@ export default class Login extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password">Password</label>
           <input
             onChange={this.handleFieldChange}
             type="password"
@@ -57,7 +57,7 @@ export default class Login extends Component {
           />
         </div>
 
-        <button type="submit">Sign in</button>
+        <button type="submit">Sign In</button>
       </form>
     );
   }
