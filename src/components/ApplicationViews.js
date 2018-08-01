@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import BallUp from "./BallUp";
 import BallersList from "./ballers/BallersList";
 import CourtsList from "./courts/CourtsList";
 import CourtDetail from "./courts/CourtDetail";
@@ -80,7 +81,17 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/login" component={Login} />
+        <Route
+          exact
+          path="/"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return <BallUp />;
+            } else {
+              return <Login {...props} />;
+            }
+          }}
+        />
         {/* <Route
           exact
           path="/"
