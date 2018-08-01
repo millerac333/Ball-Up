@@ -11,20 +11,20 @@
       "ballerId": "1"
     }
   ],
-  "locations": [
+  "courts": [
     {
       "name": "Test Location Name 1",
       "address": "111 Test Location Address",
       "hours": "8AM-8PM",
       "type": true,
-      "locationId": "0"
+      "courtId": "0"
     },
     {
       "name": "Test Location Name 2",
       "address": "222 Test Location Address",
       "hours": "8AM-8PM",
       "type": false,
-      "locationId": "1"
+      "courtId": "1"
     }
   ],
   "games": [

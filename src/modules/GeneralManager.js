@@ -1,16 +1,16 @@
 import settings from "../settings";
 
 export default Object.create(null, {
-  getAll: {
-    value: resource => {
-      return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
-    }
-  },
   getSingle: {
     value: function(resource, id) {
       return fetch(`${settings.remoteURL}/${resource}/${id}`).then(e =>
         e.json()
       );
+    }
+  },
+  getAll: {
+    value: resource => {
+      return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
     }
   },
   delete: {

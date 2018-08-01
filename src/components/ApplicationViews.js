@@ -64,8 +64,11 @@ export default class ApplicationViews extends Component {
 
   componentDidMount() {
     const _state = {};
-    GamesManager.listWithCaretaker()
+    // GamesManager.listWithCaretaker()
+    GamesManager.all()
       .then(games => (_state.games = games))
+      .then(JoinedGamesManager.all())
+      .then(joinedGames => (_state.joinedGames = joinedGames))
       .then(() => BallersManager.all())
       .then(ballers => (_state.ballers = ballers))
       .then(() => CourtsManager.all())
@@ -77,13 +80,14 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route
+        <Route exact path="/login" component={Login} />
+        {/* <Route
           exact
           path="/"
           render={props => {
-            return <CourtsList locations={this.state.courts} />;
+            return <CourtsList courts={this.state.courts} />;
           }}
-        />
+        /> */}
         <Route
           path="/courts/:courtsId(\d+)"
           render={props => {
@@ -91,7 +95,7 @@ export default class ApplicationViews extends Component {
               <CourtDetail
                 {...props}
                 deleteCourts={this.deleteCourts}
-                gamesJoined={this.state.courts}
+                courts={this.state.courts}
               />
             );
           }}
