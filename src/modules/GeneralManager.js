@@ -1,26 +1,26 @@
 import settings from "../settings";
 
 export default Object.create(null, {
-  getSingle: {
+  getSingleDataBlock: {
     value: function(resource, id) {
       return fetch(`${settings.remoteURL}/${resource}/${id}`).then(e =>
         e.json()
       );
     }
   },
-  getAll: {
+  getAllData: {
     value: resource => {
       return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
     }
   },
-  delete: {
+  deleteData: {
     value: (resource, id) => {
       return fetch(`${settings.remoteURL}/${resource}/${id}`, {
         method: "DELETE"
       });
     }
   },
-  patch: {
+  patchData: {
     value: function(resource, resourceObject) {
       return fetch(`${settings.remoteURL}/${resource}`, {
         method: "PATCH",
@@ -31,7 +31,7 @@ export default Object.create(null, {
       }).then(e => e.json());
     }
   },
-  post: {
+  postData: {
     value: function(resource, resourceObject) {
       return fetch(`${settings.remoteURL}/${resource}`, {
         method: "POST",

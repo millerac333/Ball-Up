@@ -1,14 +1,34 @@
 {
   "ballers": [
     {
-      "ballername": "Test User 0",
-      "password": "password",
-      "ballerId": "0"
-    },
-    {
       "ballername": "Test User 1",
       "password": "password",
-      "ballerId": "1"
+      "id": 1
+    },
+    {
+      "ballername": "Test User 2",
+      "password": "password",
+      "id": 2
+    },
+    {
+      "ballername": "Baller4Life",
+      "password": "espn",
+      "id": 3
+    },
+    {
+      "ballername": "Baller4Life",
+      "password": "espn",
+      "id": 4
+    },
+    {
+      "ballername": "Baller4Life",
+      "password": "reddit",
+      "id": 5
+    },
+    {
+      "ballername": "Baller4Life",
+      "password": "bla",
+      "id": 6
     }
   ],
   "courts": [
@@ -17,29 +37,29 @@
       "address": "111 Test Location Address",
       "hours": "8AM-8PM",
       "type": true,
-      "courtId": "0"
+      "courtId": "1"
     },
     {
       "name": "Test Location Name 2",
       "address": "222 Test Location Address",
       "hours": "8AM-8PM",
       "type": false,
-      "courtId": "1"
+      "courtId": "2"
     }
   ],
   "games": [
     {
-      "creatorBallerId": "0",
-      "joinedBallerId": "1",
-      "locationId": "0",
+      "creatorBallerId": "1",
+      "joinedBallerId": "2",
+      "locationId": "1",
       "duration": "12PM-2PM",
       "courtSize": true,
-      "gameId": "0"
+      "gameId": "2"
     },
     {
-      "creatorBallerId": "1",
-      "joinedBallerId": "0",
-      "locationId": "1",
+      "creatorBallerId": "2",
+      "joinedBallerId": "1",
+      "locationId": "2",
       "duration": "12PM-2PM",
       "courtSize": false,
       "gameId": "1"
@@ -47,14 +67,14 @@
   ],
   "joinedGames": [
     {
-      "joinedGameId": "0",
-      "gameId": "0",
-      "joinedBallerId": "1"
-    },
-    {
       "joinedGameId": "1",
       "gameId": "1",
-      "joinedBallerId": "0"
+      "joinedBallerId": "2"
+    },
+    {
+      "joinedGameId": "2",
+      "gameId": "2",
+      "joinedBallerId": "1"
     }
   ]
 }

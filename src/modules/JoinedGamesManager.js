@@ -3,12 +3,12 @@ import GeneralManager from "./GeneralManager";
 export default Object.create(GeneralManager, {
   get: {
     value: function(id) {
-      return this.getSingle("joinedGames", id);
+      return this.getSingleDataBlock("joinedGames", id);
     }
   },
   all: {
     value: function() {
-      return this.getAll("joinedGames");
+      return this.getAllData("joinedGames");
     }
   },
   // getWithCaretaker: {
@@ -23,17 +23,17 @@ export default Object.create(GeneralManager, {
   // },
   add: {
     value: function(resource) {
-      return this.post("joinedGames", resource);
+      return this.postData("joinedGames", resource);
     }
   },
   addAndList: {
     value: function(resource) {
-      return this.post("joinedGames", resource).then(() => this.all());
+      return this.postData("joinedGames", resource).then(() => this.all());
     }
   },
   removeAndList: {
     value: function(id) {
-      return this.delete("joinedGames", id).then(() => this.all());
+      return this.deleteData("joinedGames", id).then(() => this.all());
     }
   }
 });

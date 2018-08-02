@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import BallUp from "./BallUp";
+import { Route, Redirect } from "react-router-dom";
 import BallersList from "./ballers/BallersList";
 import CourtsList from "./courts/CourtsList";
 import CourtDetail from "./courts/CourtDetail";
@@ -48,12 +47,12 @@ export default class ApplicationViews extends Component {
   //       joinedGames: joinedGames
   //     })
   //   );
-  // addBallers = ballers =>
-  //   BallersManager.addAndList(baller).then(ballers =>
-  //     this.setState({
-  //       ballers: ballers
-  //     })
-  //   );
+  addBallers = ballers =>
+    BallersManager.addAndList(ballers).then(ballers =>
+      this.setState({
+        ballers: ballers
+      })
+    );
   // addCourts = courts =>
   //   CourtsManager.addAndList(court).then(courts =>
   //     this.setState({
@@ -86,19 +85,21 @@ export default class ApplicationViews extends Component {
           path="/"
           render={props => {
             if (this.isAuthenticated()) {
-              return <BallUp />;
+              return <CourtsList />;
             } else {
               return <Login {...props} />;
             }
           }}
         />
-        {/* <Route
-          exact
-          path="/"
-          render={props => {
-            return <CourtsList courts={this.state.courts} />;
-          }}
-        /> */}
+        {/* {
+          <Route
+            exact
+            path="/"
+            render={props => {
+              return <CourtsList courts={this.state.courts} />;
+            }}
+          />
+        } */}
         <Route
           path="/courts/:courtsId(\d+)"
           render={props => {
@@ -220,10 +221,9 @@ export default class ApplicationViews extends Component {
                   courts={this.state.courts}
                 />
               );
+            } else {
+              return <Redirect to="/Login" />;
             }
-            // } else {
-            //   return <Redirect to="/login" />;
-            // }
           }}
         />
 
