@@ -13,7 +13,7 @@ export default class CourtsList extends Component {
       //         <h4 className="card-courts courtName">{courts.name}</h4>
       //         <h4 className="card-courts courtAddress">{courts.address}</h4>
       //         <h4 className="card-courts courtHours">{courts.hours}</h4>
-      //         <h4 className="card-courts courtSize">{courts.size}</h4>
+      //         <h4 className="card-courts courtType">{courts.courtType}</h4>
       // // {/* <button
       //   type="button"
       //   className="card-courts court!id"

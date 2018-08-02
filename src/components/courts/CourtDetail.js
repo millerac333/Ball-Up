@@ -15,8 +15,8 @@ export default class CourtsDetail extends Component {
             <div className="courts-card-address">{courts.address}</div>
             <label htmlFor="courts-card-hours">Hours of Operation</label>
             <div className="courts-card-hours">{courts.hours}</div>
-            <label htmlFor="courts-card-type">Court Type</label>
-            <div className="courts-card-type">{courts.type}</div>
+            <label htmlFor="courts-card-courtType">Court Type</label>
+            <div className="courts-card-courtType">{courts.courtType}</div>
             {/* <button
               type="button"
               className="courts-card-button"
