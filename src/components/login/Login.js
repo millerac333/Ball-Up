@@ -10,9 +10,9 @@ export default class Login extends Component {
     password: ""
   };
   // Update state whenever an input field is edited
-  handleFieldChange = evt => {
+  handleFieldChange = e => {
     const stateToChange = {};
-    stateToChange[evt.target.id] = evt.target.value;
+    stateToChange[e.target.id] = e.target.value;
     this.setState(stateToChange);
   };
   // Simplistic handler for login submit
@@ -63,7 +63,7 @@ export default class Login extends Component {
     ).then(baller => {
       if (
         baller.length === 0 ||
-        baller[0].ballername !== this.state.ballername
+        baller[0].ballername === this.state.ballername
       ) {
         alert(
           "Sorry, the Ballername is taken. Please try a different Ballername"
