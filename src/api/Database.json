@@ -36,15 +36,15 @@
       "name": "Test Location Name 1",
       "address": "111 Test Location Address",
       "hours": "8AM-8PM",
-      "type": true,
-      "courtId": "1"
+      "size": true,
+      "id": 1
     },
     {
       "name": "Test Location Name 2",
       "address": "222 Test Location Address",
       "hours": "8AM-8PM",
-      "type": false,
-      "courtId": "2"
+      "size": false,
+      "id": 2
     }
   ],
   "games": [
