@@ -21,14 +21,14 @@
       "name": "Test Location Name 1",
       "address": "111 Test Location Address",
       "hours": "8AM-8PM",
-      "size": true,
+      "type": true,
       "id": 1
     },
     {
       "name": "Test Location Name 2",
       "address": "222 Test Location Address",
       "hours": "8AM-8PM",
-      "size": false,
+      "type": false,
       "id": 2
     }
   ],
