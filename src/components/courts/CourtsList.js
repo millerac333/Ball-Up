@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TimeManager from "../../TimeManager";
+import TimeManager from "../../modules/TimeManager";
 
 export default class CourtsList extends Component {
   render() {
