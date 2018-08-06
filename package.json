@@ -15,6 +15,7 @@
     "rc-datetime-picker": "^1.6.1",
     "rc-time-picker": "^3.3.1",
     "react": "^16.4.1",
+    "react-collapsible": "^2.2.0",
     "react-datetime": "^2.15.0",
     "react-dom": "^16.4.1",
     "react-native-awesome-alerts": "^1.0.8",

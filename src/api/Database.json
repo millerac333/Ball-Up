@@ -30,6 +30,12 @@
       "hours": "8AM-8PM",
       "type": false,
       "id": 2
+    },
+    {
+      "address": "123 Word St",
+      "hours": "",
+      "courtType": "",
+      "id": 3
     }
   ],
   "games": [

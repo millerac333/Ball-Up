@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import BallersList from "./ballers/BallersList";
 import CourtsList from "./courts/CourtsList";
-import CourtDetail from "./courts/CourtDetail";
 import CourtForm from "./courts/CourtForm";
 import GamesList from "./games/GamesList";
-import GameDetail from "./games/GameDetail";
+// import GameDetail from "./games/GameDetail";
 import GameForm from "./games/GameForm";
 import GamesJoinedList from "./games-joined/GamesJoinedList";
 import GameJoinedDetail from "./games-joined/GameJoinedDetail";
@@ -35,30 +34,30 @@ export default class ApplicationViews extends Component {
         joinedGames: joinedGames
       })
     );
-  // addGames = games =>
-  //   GamesManager.addAndList(game).then(games =>
-  //     this.setState({
-  //       games: games
-  //     })
-  //   );
-  // addJoinedGames = joinedGames =>
-  //   GamesManager.addAndList(joinedGame).then(joinedGames =>
-  //     this.setState({
-  //       joinedGames: joinedGames
-  //     })
-  //   );
+  addGames = games =>
+    GamesManager.addAndList(games).then(games =>
+      this.setState({
+        games: games
+      })
+    );
+  addJoinedGames = joinedGames =>
+    GamesManager.addAndList(joinedGames).then(joinedGames =>
+      this.setState({
+        joinedGames: joinedGames
+      })
+    );
   addBallers = ballers =>
     BallersManager.addAndList(ballers).then(ballers =>
       this.setState({
         ballers: ballers
       })
     );
-  // addCourts = courts =>
-  //   CourtsManager.addAndList(court).then(courts =>
-  //     this.setState({
-  //       courts: courts
-  //     })
-  //   );
+  addCourts = courts =>
+    CourtsManager.addAndList(courts).then(court =>
+      this.setState({
+        courts: courts
+      })
+    );
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
 
@@ -78,6 +77,7 @@ export default class ApplicationViews extends Component {
       });
   }
   render() {
+    console.log(this.state.courts);
     return (
       <React.Fragment>
         <Route
@@ -85,7 +85,7 @@ export default class ApplicationViews extends Component {
           path="/"
           render={props => {
             if (this.isAuthenticated()) {
-              return <CourtsList />;
+              return <CourtsList courts={this.state.courts} {...props} />;
             } else {
               return <Login {...props} />;
             }
@@ -100,25 +100,25 @@ export default class ApplicationViews extends Component {
             }}
           />
         } */}
-        <Route
-          path="/courts/:courtsId(\d+)"
+        {/* <Route
+          path="/courts/:courtId(\d+)"
           render={props => {
             return (
               <CourtDetail
                 {...props}
                 deleteCourts={this.deleteCourts}
-                courts={this.state.courts}
+                courts={this.state.court}
               />
             );
           }}
-        />
-        <Route
+        /> */}
+        {/* <Route
           exact
           path="/courts"
           render={props => {
             return <CourtsList courts={this.state.courts} />;
           }}
-        />
+        /> */}
         <Route
           path="/courts/new"
           render={props => {
@@ -145,7 +145,7 @@ export default class ApplicationViews extends Component {
             );
           }}
         />
-        <Route
+        {/* <Route
           path="/games/:gameId(\d+)"
           render={props => {
             return (
@@ -156,7 +156,7 @@ export default class ApplicationViews extends Component {
               />
             );
           }}
-        />
+        /> */}
         <Route
           path="/games/new"
           render={props => {
