@@ -1,70 +1,48 @@
-// import React, { Component } from "react";
-// import Events from "./Events";
+import React, { Component } from "react";
+import GameCard from "./GameCard";
+import GamesManager from "../../modules/GamesManager";
+import GameForm from "./GameForm";
 
-// export default class EventsList extends Component {
-//   state = { clicked: "" };
-//   componentDidMount() {
-//     this.props.setEventState();
-//   }
-//   addNewEvent = event => {
-//     const name = event.target.eventsTitle.value;
-//     const placeOf = event.target.eventsLocation.value;
-//     const date = event.target.eventsDate.value;
+export default class GamesList extends Component {
+  state = {
+    games: this.props.games,
+    creatorBallerId: "",
+    joinedBallerId: "",
+    locationId: "",
+    duration: "",
+    courtSize: "",
+    gameId: ""
+  };
 
-//     fetch("http://localhost:5002/events", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json; charset=utf-8"
-//       },
-//       body: JSON.stringify({
-//         name: name,
-//         placeOf: placeOf,
-//         date: date
-//       })
-//     })
-//       .then(() => {
-//         return fetch("http://localhost:5002/events");
-//       })
-//       .then(a => a.json())
-//       .then(this.props.setEventState);
-//   };
-//   formLauncher = () => {
-//     if (this.state.clicked === "") {
-//       this.setState({
-//         clicked: (
-//           <form onSubmit={this.addNewEvent} class="eventContainer">
-//             <label>Event Title</label>
-//             <input id="eventsTitle" name="eventsTitle" type="text" />
-//             <label>Event Location</label>
-//             <input id="eventsLocation" name="eventsLocation" type="text" />
-//             <label>Event Date</label>
-//             <input id="eventsDate" name="eventsDate" type="text" />
-//             <button type="submit">Submit</button>
-//           </form>
-//         )
-//       });
-//     } else {
-//       this.setState({ clicked: "" });
-//     }
-//   };
+  passGamesList() {
+    GamesManager.all(this.props.games).then(() => {
+      this.props.history.push("/games");
+    });
+  }
 
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <div>
-//           <button onClick={this.formLauncher}>ADD EVENT</button>
-//           {this.state.clicked}
-//           {this.props.events.map(event => (
-//             <Events
-//               key={event.id}
-//               event={event}
-//               deleteEvents={this.props.deleteEvents}
-//             >
-//               {event}
-//             </Events>
-//           ))}
-//         </div>
-//       </React.Fragment>
-//     );
-//   }
-// }
+  render() {
+    console.log(this.state.games);
+    return (
+      <React.Fragment>
+        <div>
+          <div className="gamesButton">
+            <button
+              type="button"
+              onClick={() => {
+                this.props.history.push("/games/new");
+              }}
+              className="btn btn-success"
+            >
+              Add Court{<GameForm />}
+            </button>
+          </div>
+          <section className="games">
+            {this.props.games.map(game => (
+              <GameCard key={game.id} game={game} {...this.props} />
+            ))}
+          </section>
+        </div>
+      </React.Fragment>
+    );
+  }
+}

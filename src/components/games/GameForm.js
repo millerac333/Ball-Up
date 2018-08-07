@@ -1,143 +1,107 @@
-// import React, { Component } from "react";
-// import { Label, Input, Select, Checkbox, Button } from "bloomer";
-// import Collapsible from "react-collapsible";
+import React, { Component } from "react";
+import GamesManager from "../../modules/CourtsManager";
 
-// export default class GameForm extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <form>
-//           <Collapsible trigger="Macronutrients">
-//             <Label>Protien</Label>
-//             <Input
-//               type="number"
-//               id="ProMin"
-//               placeholder="Min"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//             <Input
-//               type="number"
-//               id="ProMax"
-//               placeholder="Max"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
+export default class GameForm extends Component {
+  state = {
+    games: this.props.games,
+    creatorBallerId: "",
+    joinedBallerId: "",
+    locationId: "",
+    duration: "",
+    courtSize: "",
+    gameId: ""
+  };
 
-//             <Label>Carbohydrates</Label>
-//             <Input
-//               type="number"
-//               id="CarbMin"
-//               placeholder="Min"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//             <Input
-//               type="number"
-//               id="CarbMax"
-//               placeholder="Max"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
+  // Update state whenever an input field is edited
+  handleFieldChange = e => {
+    const stateToChange = {};
+    stateToChange[e.target.id] = e.target.value;
+    this.setState(stateToChange);
+  };
 
-//             <Label>Fats</Label>
-//             <Input
-//               type="number"
-//               id="FatMin"
-//               placeholder="Min"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//             <Input
-//               type="number"
-//               id="FatMax"
-//               placeholder="Max"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//           </Collapsible>
+  addNewGame = e => {
+    e.preventDefault();
+    const game = {
+      creatorBallerId: this.state.creatorBallerId,
+      joinedBallerId: this.state.joinedBallerId,
+      locationId: this.state.locationId,
+      duration: this.state.duration,
+      courtSize: this.state.courtSize,
+      gameId: this.state.gameId
+    };
+    GamesManager.add(game).then(() => {
+      this.props.history.push("/games");
+    });
+  };
 
-//           <Collapsible trigger="Food">
-//             <Input
-//               type="text"
-//               id="FoodType"
-//               placeholder="What do you want to eat?"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//           </Collapsible>
-
-//           <Collapsible trigger="Ingredients">
-//             <Input
-//               type="text"
-//               id="IngredType"
-//               placeholder="What do you want in it?"
-//               // required
-//               onChange={this.props.handleFieldChange}
-//             />
-//           </Collapsible>
-
-// {
-/* <Collapsible trigger="I'm alergic to...">
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Dairy"
-                            id="Dairy"
-                            onClick={this.props.handleCheckboxChange}
-                        > Dairy </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Egg"
-                            id="Egg"
-                            onClick={this.props.handleCheckboxChange}
-                        > Egg </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Gluten"
-                            id="Gluten"
-                            onClick={this.props.handleCheckboxChange}
-                        > Gluten </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Peanut"
-                            id="Peanut"
-                            onClick={this.props.handleCheckboxChange}
-                        > Peanut </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Treenut"
-                            id="Treenut"
-                            onClick={this.props.handleCheckboxChange}
-                        > Tree Nut </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Seafood"
-                            id="Seafood"
-                            onClick={this.props.handleCheckboxChange}
-                        > Seafood </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Sesame"
-                            id="Sesame"
-                            onClick={this.props.handleCheckboxChange}
-                        > Sesame </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Soy"
-                            id="Soy"
-                            onClick={this.props.handleCheckboxChange}
-                        > Soy </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Sulfate"
-                            id="Sulfate"
-                            onClick={this.props.handleCheckboxChange}
-                        > Sulfate </Checkbox>
-                        <Checkbox
-                            addClass="Alergy"
-                            name="Wheat"
-                            id="Wheat"
-                            onClick={this.props.handleCheckboxChange}
-                        > Wheat </Checkbox>
-</Collapsible> */
-// }
+  render() {
+    return (
+      <React.Fragment>
+        <form className="gamesForm">
+          <div className="games-form-group">
+            <label htmlFor="locationId">Choose Court Location:</label>
+            <input
+              type="gamelocation"
+              required="true"
+              className="games-form-control"
+              onChange={this.handleFieldChange}
+              id="gamelocation"
+              placeholder="Court Location"
+            />
+          </div>
+          <div className="games-form-group">
+            <label htmlFor="">Number of Players:</label>
+            <input
+              type="number"
+              required="true"
+              className="courts-form-control"
+              onChange={this.handleFieldChange}
+              id="numberOfPlayers"
+              placeholder="Number of Players"
+            />
+          </div>
+          <div className="games-form-group">
+            <label htmlFor="hours">Duration of Game:</label>
+            <input
+              type="duration"
+              required="true"
+              className="games-form-control"
+              onChange={this.handleFieldChange}
+              id="duration"
+              placeholder="Duration of Game"
+            />
+          </div>
+          <div className="courts-form-group">
+            <label htmlFor="courtType">Court Size::</label>
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Select<span class="caret" />
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="">Full-court</a>
+                </li>
+                <li>
+                  <a href="">Half-court</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button
+            type="submit"
+            onClick={this.addNewGame}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </React.Fragment>
+    );
+  }
+}
