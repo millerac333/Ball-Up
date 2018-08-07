@@ -8,7 +8,7 @@ export default class BallUp extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* <BallUpNavBar /> */}
+        <BallUpNavBar />
         <ApplicationViews />
       </React.Fragment>
     );

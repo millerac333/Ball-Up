@@ -73,17 +73,17 @@ export default class GameForm extends Component {
           </div>
           <div className="courts-form-group">
             <label htmlFor="courtType">Court Size::</label>
-            <div class="btn-group">
+            <div className="btn-group">
               <button
                 type="button"
-                class="btn btn-default dropdown-toggle"
+                className="btn btn-default dropdown-toggle"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Select<span class="caret" />
+                Select<span className="caret" />
               </button>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <a href="">Full-court</a>
                 </li>
@@ -91,15 +91,15 @@ export default class GameForm extends Component {
                   <a href="">Half-court</a>
                 </li>
               </ul>
+              <button
+                type="submit"
+                onClick={this.addNewGame}
+                className="btn btn-primary"
+              >
+                Submit
+              </button>
             </div>
           </div>
-          <button
-            type="submit"
-            onClick={this.addNewGame}
-            className="btn btn-primary"
-          >
-            Submit
-          </button>
         </form>
       </React.Fragment>
     );
