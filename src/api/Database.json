@@ -32,8 +32,9 @@
       "id": 2
     },
     {
+      "name": "Nuggget",
       "address": "123 Word St",
-      "hours": "",
+      "hours": "24hr",
       "courtType": "",
       "id": 3
     }
@@ -44,7 +45,7 @@
       "joinedBallerId": "2",
       "locationId": "1",
       "duration": "12PM-2PM",
-      "courtSize": true,
+      "courtSize": "Full-court",
       "gameId": "2"
     },
     {
@@ -52,7 +53,7 @@
       "joinedBallerId": "1",
       "locationId": "2",
       "duration": "12PM-2PM",
-      "courtSize": false,
+      "courtSize": "Half-court",
       "gameId": "1"
     }
   ],

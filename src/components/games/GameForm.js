@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import GamesManager from "../../modules/CourtsManager";
+import { Field, Control, Button, Input, Label, Select } from "bloomer";
 
 export default class GameForm extends Component {
   state = {
-    games: this.props.games,
+    // games: this.props.games,
     creatorBallerId: "",
     joinedBallerId: "",
     locationId: "",
     duration: "",
     courtSize: "",
-    gameId: ""
+    id: ""
   };
 
   // Update state whenever an input field is edited
@@ -19,7 +20,7 @@ export default class GameForm extends Component {
     this.setState(stateToChange);
   };
 
-  addNewGame = e => {
+  addGame = e => {
     e.preventDefault();
     const game = {
       creatorBallerId: this.state.creatorBallerId,
@@ -27,7 +28,7 @@ export default class GameForm extends Component {
       locationId: this.state.locationId,
       duration: this.state.duration,
       courtSize: this.state.courtSize,
-      gameId: this.state.gameId
+      id: this.state.gameId
     };
     GamesManager.add(game).then(() => {
       this.props.history.push("/games");
@@ -37,70 +38,73 @@ export default class GameForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="gamesForm">
-          <div className="games-form-group">
-            <label htmlFor="locationId">Choose Court Location:</label>
-            <input
-              type="gamelocation"
+        <Field>
+          <Label>Choose Court Location:</Label>
+          <Control>
+            <Input
+              type="text"
+              placeholder="Court Location"
               required="true"
-              className="games-form-control"
+              className="game-location"
               onChange={this.handleFieldChange}
               id="gamelocation"
-              placeholder="Court Location"
             />
-          </div>
-          <div className="games-form-group">
-            <label htmlFor="">Number of Players:</label>
-            <input
-              type="number"
+          </Control>
+        </Field>
+        <Field>
+          <Label>Select:</Label>
+          <Control>
+            <Select>
+              <option href="#">0</option>
+              <option href="#">9</option>
+              <option href="#">8</option>
+              <option href="#">7</option>
+              <option href="#">6</option>
+              <option href="#">5</option>
+              <option href="#">4</option>
+              <option href="#">3</option>
+              <option href="#">2</option>
+              <option href="#">1</option>
+            </Select>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Duration of Game:</Label>
+          <Control>
+            <Input
+              type="EX:12PM-2PM"
               required="true"
-              className="courts-form-control"
-              onChange={this.handleFieldChange}
-              id="numberOfPlayers"
-              placeholder="Number of Players"
-            />
-          </div>
-          <div className="games-form-group">
-            <label htmlFor="hours">Duration of Game:</label>
-            <input
-              type="duration"
-              required="true"
-              className="games-form-control"
+              className="game-duration"
               onChange={this.handleFieldChange}
               id="duration"
-              placeholder="Duration of Game"
+              placeholder="EX:12PM-2PM"
             />
-          </div>
-          <div className="courts-form-group">
-            <label htmlFor="courtType">Court Size::</label>
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-default dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Select<span className="caret" />
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a href="">Full-court</a>
-                </li>
-                <li>
-                  <a href="">Half-court</a>
-                </li>
-              </ul>
-              <button
-                type="submit"
-                onClick={this.addNewGame}
-                className="btn btn-primary"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Select:</Label>
+          <Control>
+            <Select>
+              <option href="#" isActive>
+                Full-court
+              </option>
+              <option href="game-size">Half-court</option>
+            </Select>
+          </Control>
+        </Field>
+        <Field isGrouped>
+          <Control>
+            <Button
+              isColor="primary"
+              type="submit"
+              onClick={this.addGame}
+              Submit
+            />
+          </Control>
+          <Control>
+            <Button isLink={this.props.history.push("/games/")}>Cancel</Button>
+          </Control>
+        </Field>
       </React.Fragment>
     );
   }

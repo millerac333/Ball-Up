@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import CourtCard from "./CourtCard";
 import CourtsManager from "../../modules/CourtsManager";
-import CourtForm from "./CourtForm";
+import { Link } from "react-router-dom";
+// import CourtForm from "./CourtForm";
 
 export default class CourtsList extends Component {
   state = {
@@ -23,24 +24,19 @@ export default class CourtsList extends Component {
     console.log(this.state.courts);
     return (
       <React.Fragment>
-        <div>
-          <div className="courtsButton">
-            <button
-              type="button"
-              onClick={() => {
-                this.props.history.push("/courts/new");
-              }}
-              className="btn btn-success"
-            >
-              Add Court{<CourtForm />}
-            </button>
-          </div>
-          <section className="courts">
-            {this.props.courts.map(court => (
-              <CourtCard key={court.id} court={court} {...this.props} />
-            ))}
-          </section>
-        </div>
+        <Link
+          className="add-court"
+          to={{
+            pathname: "/courts/new"
+          }}
+        >
+          Add Court
+        </Link>
+        <section className="courts">
+          {this.props.courts.map(court => (
+            <CourtCard key={court.id} court={court} {...this.props} />
+          ))}
+        </section>
       </React.Fragment>
     );
   }

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
-import BallersList from "./ballers/BallersList";
+import { Route } from "react-router-dom";
 import CourtsList from "./courts/CourtsList";
 import CourtForm from "./courts/CourtForm";
 import GamesList from "./games/GamesList";
-// import GameDetail from "./games/GameDetail";
 import GameForm from "./games/GameForm";
 import GamesJoinedList from "./games-joined/GamesJoinedList";
 import GameJoinedDetail from "./games-joined/GameJoinedDetail";
@@ -13,6 +11,8 @@ import JoinedGamesManager from "../modules/JoinedGamesManager";
 import BallersManager from "../modules/BallersManager";
 import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
+
+// dropdown, booleans, submit on form does not push back
 
 export default class ApplicationViews extends Component {
   state = {
@@ -25,7 +25,7 @@ export default class ApplicationViews extends Component {
   deleteGames = id =>
     GamesManager.removeAndList(id).then(games =>
       this.setState({
-        games: games
+        game: games
       })
     );
   deleteJoinedGames = id =>
@@ -53,7 +53,7 @@ export default class ApplicationViews extends Component {
       })
     );
   addCourts = courts =>
-    CourtsManager.addAndList(courts).then(court =>
+    CourtsManager.addAndList(courts).then(courts =>
       this.setState({
         courts: courts
       })
@@ -78,6 +78,7 @@ export default class ApplicationViews extends Component {
   }
   render() {
     console.log(this.state.courts);
+    console.log(this.state.games);
     return (
       <React.Fragment>
         <Route
@@ -91,15 +92,15 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
-        {/* {
+        {
           <Route
             exact
-            path="/"
+            path="/courts"
             render={props => {
               return <CourtsList courts={this.state.courts} />;
             }}
           />
-        } */}
+        }
         {/* <Route
           path="/courts/:courtId(\d+)"
           render={props => {
@@ -208,7 +209,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
+        {/* <Route
           exact
           path="/ballers"
           render={props => {
@@ -225,7 +226,7 @@ export default class ApplicationViews extends Component {
               return <Redirect to="/Login" />;
             }
           }}
-        />
+        /> */}
 
         <Route path="/login" component={Login} />
       </React.Fragment>

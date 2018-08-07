@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import CourtsManager from "../../modules/CourtsManager";
+import { Field, Control, Button, Input, Label, Select } from "bloomer";
+
 export default class CourtForm extends Component {
   // Set initial state
   state = {
@@ -16,10 +18,10 @@ export default class CourtForm extends Component {
     this.setState(stateToChange);
   };
 
-  addNewCourt = e => {
+  addCourt = e => {
     e.preventDefault();
     const court = {
-      name: this.state.courtlName,
+      name: this.state.courtName,
       address: this.state.address,
       hours: this.state.hours,
       courtType: this.state.courtType
@@ -32,70 +34,64 @@ export default class CourtForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="courtsForm">
-          <div className="courts-form-group">
-            <label htmlFor="courtsName">Court Name:</label>
-            <input
-              type="courtName"
+        <Field>
+          <Label> Court's Name:</Label>
+          <Control>
+            <Input
+              type="text"
+              placeholder="name"
               required="true"
-              className="courts-form-control"
+              className="court-name"
               onChange={this.handleFieldChange}
               id="courtName"
-              placeholder="Court Name"
             />
-          </div>
-          <div className="courts-form-group">
-            <label htmlFor="breed">Address:</label>
-            <input
-              type="address"
+          </Control>
+        </Field>
+        <Field>
+          <Label>Address:</Label>
+          <Control>
+            <Input
+              type="text"
+              placeholder="address"
               required="true"
-              className="courts-form-control"
+              className="court-address"
               onChange={this.handleFieldChange}
               id="address"
-              placeholder="Address"
             />
-          </div>
-          <div className="courts-form-group">
-            <label htmlFor="hours">Hours of Operation:</label>
-            <input
-              type="hoursOfOperation"
-              required="false"
-              className="courts-form-control"
+          </Control>
+        </Field>
+        <Field>
+          <Label>Hours of Operation:</Label>
+          <Control>
+            <Input
+              type="text"
+              placeholder="EX: 24hr OR 8AM-8PM"
+              required="true"
+              className="court-hours"
               onChange={this.handleFieldChange}
-              id="hoursOfOperation"
-              placeholder="Hours of Operation"
+              id="hours"
             />
-          </div>
-          <div className="courts-form-group">
-            <label htmlFor="courtType">Court Type::</label>
-            <div class="btn-group">
-              <button
-                type="button"
-                class="btn btn-default dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Select<span class="caret" />
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="">Outdoor</a>
-                </li>
-                <li>
-                  <a href="">Indoor</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <button
-            type="submit"
-            onClick={this.addNewCourt}
-            className="btn btn-primary"
-          >
-            Submit
-          </button>
-        </form>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Select:</Label>
+          <Control>
+            <Select>
+              <option href="courtType">Outdoor</option>
+              <option href="courtType">Indoor/Gym</option>
+            </Select>
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+            <Button isColor="primary" type="submit" onClick={this.addCourt}>
+              Add Court
+            </Button>
+          </Control>
+          {/* <Control>
+            <Button isLink={this.props.history.push("/courts/")}>Cancel</Button>
+          </Control> */}
+        </Field>
       </React.Fragment>
     );
   }

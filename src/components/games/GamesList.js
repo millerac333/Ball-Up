@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import GameCard from "./GameCard";
 import GamesManager from "../../modules/GamesManager";
-import GameForm from "./GameForm";
+import { Link } from "react-router-dom";
 
 export default class GamesList extends Component {
   state = {
-    games: this.props.games,
+    games: this.props.game,
     creatorBallerId: "",
     joinedBallerId: "",
     locationId: "",
     duration: "",
     courtSize: "",
-    gameId: ""
+    id: ""
   };
 
   passGamesList() {
@@ -24,24 +24,19 @@ export default class GamesList extends Component {
     console.log(this.state.games);
     return (
       <React.Fragment>
-        <div>
-          <div className="gamesButton">
-            <button
-              type="button"
-              onClick={() => {
-                this.props.history.push("/games/new");
-              }}
-              className="btn btn-success"
-            >
-              Add Court{<GameForm />}
-            </button>
-          </div>
-          <section className="games">
-            {this.props.games.map(game => (
-              <GameCard key={game.id} game={game} {...this.props} />
-            ))}
-          </section>
-        </div>
+        <Link
+          className="add-game"
+          to={{
+            pathname: "/games/new"
+          }}
+        >
+          Add Game
+        </Link>
+        <section className="games">
+          {this.props.games.map(game => (
+            <GameCard key={game.id} game={game} {...this.props} />
+          ))}
+        </section>
       </React.Fragment>
     );
   }

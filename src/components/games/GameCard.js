@@ -2,9 +2,10 @@ import React, { Component } from "react";
 
 export default class GameCard extends Component {
   state = {
-    games: this.props.game
+    games: this.props.games
   };
   render() {
+    console.log(this.props.game);
     return (
       <React.Fragment>
         <div key={this.props.game.id} className="games-card">
@@ -27,6 +28,24 @@ export default class GameCard extends Component {
                     </label>
                     <div className="games-card-joinedBallerId">
                       {this.props.game.joinedBallerId}
+                      <div>
+                        <button
+                          type="edit"
+                          onClick={this.editGame}
+                          className="btn btn-primary"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          type="delete"
+                          onClick={this.deleteGame}
+                          className="btn btn-primary"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
