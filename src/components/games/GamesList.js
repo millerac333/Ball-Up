@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import GameCard from "./GameCard";
-import GamesManager from "../../modules/GamesManager";
+// import GamesManager from "../../modules/GamesManager";
 import { Link } from "react-router-dom";
 
 export default class GamesList extends Component {
   state = {
-    games: this.props.game,
+    games: this.props.games,
     creatorBallerId: "",
     joinedBallerId: "",
     locationId: "",
@@ -14,11 +14,11 @@ export default class GamesList extends Component {
     id: ""
   };
 
-  passGamesList() {
-    GamesManager.all(this.props.games).then(() => {
-      this.props.history.push("/games");
-    });
-  }
+  // passGamesList() {
+  //   GamesManager.all(this.props.games).then(() => {
+  //     this.props.history.push("/games");
+  //   });
+  // }
 
   render() {
     console.log(this.state.games);

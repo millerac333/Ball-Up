@@ -22,10 +22,10 @@ export default class ApplicationViews extends Component {
     gamesJoined: []
   };
 
-  deleteGames = id =>
+  deleteGame = id =>
     GamesManager.removeAndList(id).then(games =>
       this.setState({
-        game: games
+        games: games
       })
     );
   deleteJoinedGames = id =>
@@ -56,6 +56,12 @@ export default class ApplicationViews extends Component {
     CourtsManager.addAndList(courts).then(courts =>
       this.setState({
         courts: courts
+      })
+    );
+  editGame = id =>
+    CourtsManager.updateAndList(id).then(games =>
+      this.setState({
+        games: games
       })
     );
 

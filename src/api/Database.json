@@ -46,7 +46,7 @@
       "locationId": "1",
       "duration": "12PM-2PM",
       "courtSize": "Full-court",
-      "gameId": "2"
+      "id": "2"
     },
     {
       "creatorBallerId": "2",
@@ -54,7 +54,7 @@
       "locationId": "2",
       "duration": "12PM-2PM",
       "courtSize": "Half-court",
-      "gameId": "1"
+      "id": "1"
     }
   ],
   "joinedGames": [

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GamesManager from "../../modules/CourtsManager";
+import GamesManager from "../../modules/GamesManager";
 import { Field, Control, Button, Input, Label, Select } from "bloomer";
 
 export default class GameForm extends Component {
@@ -27,8 +27,7 @@ export default class GameForm extends Component {
       joinedBallerId: this.state.joinedBallerId,
       locationId: this.state.locationId,
       duration: this.state.duration,
-      courtSize: this.state.courtSize,
-      id: this.state.gameId
+      courtSize: this.state.courtSize
     };
     GamesManager.add(game).then(() => {
       this.props.history.push("/games");
@@ -47,24 +46,30 @@ export default class GameForm extends Component {
               required="true"
               className="game-location"
               onChange={this.handleFieldChange}
-              id="gamelocation"
+              id="locationId"
             />
           </Control>
         </Field>
         <Field>
           <Label>Select:</Label>
           <Control>
-            <Select>
-              <option href="#">0</option>
-              <option href="#">9</option>
-              <option href="#">8</option>
-              <option href="#">7</option>
-              <option href="#">6</option>
-              <option href="#">5</option>
-              <option href="#">4</option>
-              <option href="#">3</option>
-              <option href="#">2</option>
-              <option href="#">1</option>
+            <Select
+              type="option"
+              required="true"
+              className="game-location"
+              onChange={this.handleFieldChange}
+              id="joinedBallerId"
+            >
+              <option>0</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
             </Select>
           </Control>
         </Field>
@@ -84,26 +89,26 @@ export default class GameForm extends Component {
         <Field>
           <Label>Select:</Label>
           <Control>
-            <Select>
-              <option href="#" isActive>
-                Full-court
-              </option>
-              <option href="game-size">Half-court</option>
+            <Select
+              type="option"
+              placeholder="Court Location"
+              required="true"
+              className="game-location"
+              onChange={this.handleFieldChange}
+              id="courtSize"
+            >
+              <option>Full-court</option>
+              <option>Half-court</option>
             </Select>
           </Control>
         </Field>
-        <Field isGrouped>
+        <Field>
           <Control>
-            <Button
-              isColor="primary"
-              type="submit"
-              onClick={this.addGame}
+            <Button isColor="primary" type="submit" onClick={this.addGame}>
               Submit
-            />
+            </Button>
           </Control>
-          <Control>
-            <Button isLink={this.props.history.push("/games/")}>Cancel</Button>
-          </Control>
+          <Control />
         </Field>
       </React.Fragment>
     );
