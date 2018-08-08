@@ -8,7 +8,7 @@ import {
   Media,
   MediaContent,
   Title,
-  Subtitle,
+  Image,
   Content
 } from "bloomer";
 
@@ -19,19 +19,28 @@ export default class CourtCard extends Component {
   render() {
     return (
       <React.Fragment>
-        <Card>
+        <Card key={this.props.court.id} className="courts-card">
           <CardHeader>
-            <CardHeaderTitle />
+            <CardHeaderTitle className="courts-card-body">
+              {this.props.court.name}
+            </CardHeaderTitle>
           </CardHeader>
-          <CardImage />
+          <CardImage classname="courts-card-image">
+            <Image isRatio="4:3" src="https://via.placeholder.com/1280x960" />
+          </CardImage>
           <CardContent>
             <Media>
               <MediaContent>
-                <Title />
-                <Subtitle />
+                <Title className="courts-card-address">
+                  {this.props.court.address}
+                </Title>
               </MediaContent>
             </Media>
-            <Content />
+            <Content>
+              Hours of Operation: {this.props.court.hours}
+              <br />
+              <small>Court Type: {this.props.court.type}</small>
+            </Content>
           </CardContent>
         </Card>
       </React.Fragment>

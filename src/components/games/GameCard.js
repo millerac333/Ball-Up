@@ -26,7 +26,7 @@ export default class GameCard extends Component {
               {this.props.game.locationId}>
             </CardHeaderTitle>
           </CardHeader>
-          <CardImage>
+          <CardImage classname="game-card-image">
             <Image isRatio="4:3" src="https://via.placeholder.com/1280x960" />
           </CardImage>
           <CardContent>
