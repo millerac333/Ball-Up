@@ -13,7 +13,7 @@ export default class GameCard extends Component {
             <h5 className="games-card-courtLocation">
               {this.props.game.locationId}
               <label htmlFor="games-card-duration">Duration of Game</label>
-              <div className="games-card-duraton">
+              <div className="games-card-duration">
                 {this.props.game.duration}
                 <label htmlFor="games-card-courtSize">Court Size</label>
                 <div className="games-card-courtSize">
