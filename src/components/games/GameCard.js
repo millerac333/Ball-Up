@@ -8,6 +8,7 @@ import {
   Media,
   MediaContent,
   Title,
+  Image,
   Subtitle,
   Content
 } from "bloomer";
@@ -27,7 +28,7 @@ export default class GameCard extends Component {
             </CardHeaderTitle>
           </CardHeader>
           <CardImage classname="game-card-image">
-            <Image isRatio="4:3" src="https://via.placeholder.com/1280x960" />
+            <Image isRatio="1:1" src="https://via.placeholder.com/350x150" />
           </CardImage>
           <CardContent>
             <Media>
@@ -48,6 +49,20 @@ export default class GameCard extends Component {
               </small>
             </Content>
           </CardContent>
+          <button
+            type="edit"
+            onClick={this.editGame}
+            className="btn btn-primary"
+          >
+            Edit
+          </button>
+          <button
+            type="delete"
+            onClick={this.deleteGame}
+            className="btn btn-primary"
+          >
+            Delete
+          </button>
         </Card>
       </React.Fragment>
     );

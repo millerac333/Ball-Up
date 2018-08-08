@@ -6,6 +6,7 @@
     "ajv": "^6.5.2",
     "bloomer": "^0.6.3",
     "bootstrap": "^3.3.7",
+    "bulma": "^0.7.1",
     "input-moment": "^0.4.0",
     "install": "^0.12.1",
     "jquery": "^3.3.1",
@@ -18,7 +19,6 @@
     "react-collapsible": "^2.2.0",
     "react-datetime": "^2.15.0",
     "react-dom": "^16.4.1",
-    "react-native-awesome-alerts": "^1.0.8",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^1.1.4"
   },

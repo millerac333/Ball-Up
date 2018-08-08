@@ -26,7 +26,7 @@ export default class CourtCard extends Component {
             </CardHeaderTitle>
           </CardHeader>
           <CardImage classname="courts-card-image">
-            <Image isRatio="4:3" src="https://via.placeholder.com/1280x960" />
+            <Image isRatio="4:3" src="https://via.placeholder.com/350x150" />
           </CardImage>
           <CardContent>
             <Media>
