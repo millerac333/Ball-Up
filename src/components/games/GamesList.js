@@ -27,7 +27,7 @@ export default class GamesList extends Component {
         <Link
           className="add-game"
           to={{
-            pathname: "/games/new"
+            path: "/games/new"
           }}
         >
           Add Game

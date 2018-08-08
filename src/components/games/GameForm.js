@@ -55,16 +55,16 @@ export default class GameForm extends Component {
           <Label>Select:</Label>
           <Control>
             <Select>
-              <option href="#">0</option>
-              <option href="#">9</option>
-              <option href="#">8</option>
-              <option href="#">7</option>
-              <option href="#">6</option>
-              <option href="#">5</option>
-              <option href="#">4</option>
-              <option href="#">3</option>
-              <option href="#">2</option>
-              <option href="#">1</option>
+              <option>0</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
             </Select>
           </Control>
         </Field>
@@ -72,7 +72,7 @@ export default class GameForm extends Component {
           <Label>Duration of Game:</Label>
           <Control>
             <Input
-              type="EX:12PM-2PM"
+              type="time"
               required="true"
               className="game-duration"
               onChange={this.handleFieldChange}
@@ -85,9 +85,7 @@ export default class GameForm extends Component {
           <Label>Select:</Label>
           <Control>
             <Select>
-              <option href="#" isActive>
-                Full-court
-              </option>
+              <option href="game-size">Full-court</option>
               <option href="game-size">Half-court</option>
             </Select>
           </Control>
