@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+// import ApplicationViews from "../ApplicationViews";
 
 export default class GameCard extends Component {
   state = {
-    games: this.props.games
+    games: this.props.game
   };
+
   render() {
     console.log(this.props.game);
     return (
@@ -30,13 +33,22 @@ export default class GameCard extends Component {
             {this.props.game.joinedBallerId}
           </div>
           <div>
-            <button
+            <Link
+              className="games-card-link"
+              to={{
+                pathname: "/games/edit",
+                state: { game: this.props.game }
+              }}
+            >
+              Edit
+            </Link>
+            {/* <button
               type="edit"
               onClick={() => this.props.editGame(this.props.game.id)}
               className="btn btn-primary"
             >
               Edit
-            </button>
+            </button> */}
           </div>
           <div>
             <button

@@ -4,13 +4,16 @@ import CourtsList from "./courts/CourtsList";
 import CourtForm from "./courts/CourtForm";
 import GamesList from "./games/GamesList";
 import GameForm from "./games/GameForm";
-import GamesJoinedList from "./games-joined/GamesJoinedList";
-import GameJoinedDetail from "./games-joined/GameJoinedDetail";
+// import GameCard from "./games/GameCard";
+// import GamesJoinedList from "./games-joined/GamesJoinedList";
+// import GameJoinedDetail from "./games-joined/GameJoinedDetail";
 import GamesManager from "../modules/GamesManager";
 import JoinedGamesManager from "../modules/JoinedGamesManager";
 import BallersManager from "../modules/BallersManager";
 import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
+import EditGame from "./games/GameEdit";
+import GeneralManager from "../modules/GeneralManager";
 
 // dropdown, booleans, submit on form does not push back
 
@@ -59,11 +62,33 @@ export default class ApplicationViews extends Component {
       })
     );
   editGame = id =>
-    CourtsManager.updateAndList(id).then(games =>
+    GamesManager.updateAndList(id).then(games =>
       this.setState({
         games: games
       })
     );
+  handleFieldChange = e => {
+    const stateToChange = {};
+    stateToChange[e.target.id] = e.target.value;
+    this.setState(stateToChange);
+  };
+
+  handleUpdate = e => {
+    e.preventDefault();
+
+    const updatedGame = {
+      creatorBallerId: this.state.creatorBallerId,
+      joinedBallerId: this.state.joinedBallerId,
+      locationId: this.state.locationId,
+      duration: this.state.duration,
+      courtSize: this.state.courtSize
+    };
+    GeneralManager.patchData(
+      "games",
+      this.props.location.state.game.id,
+      updatedGame
+    );
+  };
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
 
@@ -119,13 +144,6 @@ export default class ApplicationViews extends Component {
             );
           }}
         /> */}
-        {/* <Route
-          exact
-          path="/courts"
-          render={props => {
-            return <CourtsList courts={this.state.courts} />;
-          }}
-        /> */}
         <Route
           path="/courts/new"
           render={props => {
@@ -156,14 +174,14 @@ export default class ApplicationViews extends Component {
           path="/games/:gameId(\d+)"
           render={props => {
             return (
-              <GameDetail
+              <EditGame
                 {...props}
-                deleteGame={this.deleteGame}
+                hanldleUpdate={this.hanldleUpdate}
                 games={this.state.games}
               />
             );
-          }}
-        /> */}
+          }} */}
+
         <Route
           path="/games/new"
           render={props => {
@@ -178,6 +196,18 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
+          path="/games/edit"
+          render={props => {
+            return (
+              <EditGame
+                {...props}
+                hanldleUpdate={this.hanldleUpdate}
+                game={props.location.state.game}
+              />
+            );
+          }}
+        />
+        {/* <Route
           exact
           path="/gamesJoined"
           render={props => {
@@ -213,7 +243,7 @@ export default class ApplicationViews extends Component {
               />
             );
           }}
-        />
+        /> */}
 
         {/* <Route
           exact

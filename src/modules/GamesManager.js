@@ -35,5 +35,10 @@ export default Object.create(GeneralManager, {
     value: function(id) {
       return this.deleteData("games", id).then(() => this.all());
     }
+  },
+  updateAndList: {
+    value: function(id) {
+      return this.patchData("games", id).then(() => this.all());
+    }
   }
 });
