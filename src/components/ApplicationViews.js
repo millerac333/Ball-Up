@@ -14,6 +14,7 @@ import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
 import EditGame from "./games/GameEdit";
 import GeneralManager from "../modules/GeneralManager";
+import settings from "../settings";
 
 // dropdown, booleans, submit on form does not push back
 
@@ -83,12 +84,42 @@ export default class ApplicationViews extends Component {
       duration: this.state.duration,
       courtSize: this.state.courtSize
     };
-    GeneralManager.patchData(
-      "games",
-      this.props.location.state.game.id,
-      updatedGame
-    );
+    console.log(updatedGame);
+
+    return fetch(`${settings.remoteURL}/${this.props.location.state.game.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedGame)
+    }).then(e => e.json());
+
+    // getAllData: {
+    // value: resource => {
+    //   return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
+
+    // })
   };
+
+  // patchData: {
+  //   value: function(resource, resourceObject) {
+  //     return fetch(`${settings.remoteURL}/${resource}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify(resourceObject)
+  //     }).then(e => e.json());
+  //   }
+  // }
+  // ).then(
+  //     getAllData: {
+  //       value: resource => {
+  //         return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
+  //       }
+  //     })
+  //   }
+  // }
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
 
