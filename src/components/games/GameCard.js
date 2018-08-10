@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 export default class GameCard extends Component {
   state = {
-    games: this.props.game
+    game: this.props.game
   };
 
   render() {
-    console.log(this.props.game);
+    console.log(this.state);
     return (
       <React.Fragment>
         <div key={this.props.game.id} className="games-card">
@@ -36,8 +36,8 @@ export default class GameCard extends Component {
             <Link
               className="games-card-link"
               to={{
-                pathname: "/games/edit",
-                state: { game: this.props.game }
+                pathname: "/games/edit"
+                // state: { game: this.props.game }
               }}
             >
               Edit

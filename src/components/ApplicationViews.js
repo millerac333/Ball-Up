@@ -232,8 +232,8 @@ export default class ApplicationViews extends Component {
             return (
               <EditGame
                 {...props}
-                hanldleUpdate={this.hanldleUpdate}
-                game={props.location.state.game}
+                handleUpdate={this.handleUpdate}
+                game={this.state.games}
               />
             );
           }}
