@@ -3,41 +3,39 @@ import { Link } from "react-router-dom";
 // import ApplicationViews from "../ApplicationViews";
 
 export default class GameCard extends Component {
-  state = {
-    game: this.props.game
-  };
+  state = {};
 
   render() {
-    console.log(this.state);
+    console.log("PROPS", this.props);
     return (
       <React.Fragment>
-        <div key={this.props.game.id} className="games-card">
+        <div className="games-card">
           <div className="games-card-body">
             <h5 className="games-card-courtLocation">
-              {this.props.game.locationId}
+              {/* {this.props.games.locationId} */}
             </h5>
           </div>
           <div className="games-card-duraton">
             <label htmlFor="games-card-duration">Duration of Game</label>
-            {this.props.game.duration}
+            {this.props.games.duration}
             <label htmlFor="games-card-courtSize">Court Size</label>
           </div>
           <div className="games-card-courtSize">
-            {this.props.game.courtSize}
+            {this.props.games.courtSize}
           </div>
           <div className="games-card-createdBallerId">
             <label htmlFor="games-card-createdBallerId">Game Created By</label>
           </div>
           <div className="games-card-createdBallerId">
             <label htmlFor="games-card-joinedBallerId">Game Joined By</label>
-            {this.props.game.joinedBallerId}
+            {this.props.games.joinedBallerId}
           </div>
           <div>
             <Link
               className="games-card-link"
               to={{
-                pathname: "/games/edit"
-                // state: { game: this.props.game }
+                pathname: "/games/edit",
+                state: { games: this.state.games }
               }}
             >
               Edit

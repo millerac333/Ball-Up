@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import GameCard from "./GameCard";
-// import GamesManager from "../../modules/GamesManager";
+import GamesManager from "../../modules/GamesManager";
 import { Link } from "react-router-dom";
 
 export default class GamesList extends Component {
   state = {
-    games: this.props.games,
+    games: [],
     creatorBallerId: "",
     joinedBallerId: "",
     locationId: "",
@@ -19,7 +19,13 @@ export default class GamesList extends Component {
   //     this.props.history.push("/games");
   //   });
   // }
-
+  componentDidMount() {
+    // GamesManager.listWithCaretaker()
+    GamesManager.all().then(games => {
+      this.setState({ games });
+    });
+    // .then(studentExercises => {this.setState({ studentExercises })})
+  }
   render() {
     console.log(this.state.games);
     return (
@@ -33,8 +39,8 @@ export default class GamesList extends Component {
           Add Game
         </Link>
         <section className="games">
-          {this.props.games.map(game => (
-            <GameCard key={game.id} game={game} {...this.props} />
+          {this.state.games.map(game => (
+            <GameCard key={game.id} games={game} {...this.props} />
           ))}
         </section>
       </React.Fragment>

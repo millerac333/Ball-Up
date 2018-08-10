@@ -13,8 +13,8 @@ import BallersManager from "../modules/BallersManager";
 import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
 import EditGame from "./games/GameEdit";
-import GeneralManager from "../modules/GeneralManager";
-import settings from "../settings";
+// import GeneralManager from "../modules/GeneralManager";
+// import settings from "../settings";
 
 // dropdown, booleans, submit on form does not push back
 
@@ -22,7 +22,6 @@ export default class ApplicationViews extends Component {
   state = {
     ballers: [],
     courts: [],
-    games: [],
     gamesJoined: []
   };
 
@@ -74,51 +73,51 @@ export default class ApplicationViews extends Component {
     this.setState(stateToChange);
   };
 
-  handleUpdate = e => {
-    e.preventDefault();
+  // handleUpdate = e => {
+  //   e.preventDefault();
 
-    const updatedGame = {
-      creatorBallerId: this.state.creatorBallerId,
-      joinedBallerId: this.state.joinedBallerId,
-      locationId: this.state.locationId,
-      duration: this.state.duration,
-      courtSize: this.state.courtSize
-    };
-    console.log(updatedGame);
+  //   const updatedGame = {
+  //     creatorBallerId: this.state.creatorBallerId,
+  //     joinedBallerId: this.state.joinedBallerId,
+  //     locationId: this.state.locationId,
+  //     duration: this.state.duration,
+  //     courtSize: this.state.courtSize
+  //   };
+  //   console.log(updatedGame);
 
-    return fetch(`${settings.remoteURL}/${this.props.location.state.game.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(updatedGame)
-    }).then(e => e.json());
+  //   return fetch(`${settings.remoteURL}/${this.props.location.state.game.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(updatedGame)
+  //   }).then(e => e.json());
 
-    // getAllData: {
-    // value: resource => {
-    //   return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
+  // getAllData: {
+  // value: resource => {
+  //  return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
 
-    // })
-  };
+  // })
+  // };
 
   // patchData: {
-  //   value: function(resource, resourceObject) {
-  //     return fetch(`${settings.remoteURL}/${resource}`, {
-  //       method: "PATCH",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(resourceObject)
-  //     }).then(e => e.json());
-  //   }
+  //  value: function(resource, resourceObject) {
+  //   return fetch(`${settings.remoteURL}/${resource}`, {
+  //    method: "PATCH",
+  //    headers: {
+  //     "Content-Type": "application/json"
+  //    },
+  //    body: JSON.stringify(resourceObject)
+  //   }).then(e => e.json());
+  //  }
   // }
   // ).then(
-  //     getAllData: {
-  //       value: resource => {
-  //         return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
-  //       }
-  //     })
-  //   }
+  //   getAllData: {
+  //    value: resource => {
+  //     return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
+  //    }
+  //   })
+  //  }
   // }
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
@@ -126,9 +125,7 @@ export default class ApplicationViews extends Component {
   componentDidMount() {
     const _state = {};
     // GamesManager.listWithCaretaker()
-    GamesManager.all()
-      .then(games => (_state.games = games))
-      .then(JoinedGamesManager.all())
+    JoinedGamesManager.all()
       .then(joinedGames => (_state.joinedGames = joinedGames))
       .then(() => BallersManager.all())
       .then(ballers => (_state.ballers = ballers))
@@ -139,8 +136,6 @@ export default class ApplicationViews extends Component {
       });
   }
   render() {
-    console.log(this.state.courts);
-    console.log(this.state.games);
     return (
       <React.Fragment>
         <Route
@@ -164,17 +159,17 @@ export default class ApplicationViews extends Component {
           />
         }
         {/* <Route
-          path="/courts/:courtId(\d+)"
-          render={props => {
-            return (
-              <CourtDetail
-                {...props}
-                deleteCourts={this.deleteCourts}
-                courts={this.state.court}
-              />
-            );
-          }}
-        /> */}
+     path="/courts/:courtId(\d+)"
+     render={props => {
+      return (
+       <CourtDetail
+        {...props}
+        deleteCourts={this.deleteCourts}
+        courts={this.state.court}
+       />
+      );
+     }}
+    /> */}
         <Route
           path="/courts/new"
           render={props => {
@@ -187,7 +182,6 @@ export default class ApplicationViews extends Component {
             );
           }}
         />
-
         <Route
           exact
           path="/games"
@@ -196,99 +190,96 @@ export default class ApplicationViews extends Component {
               <GamesList
                 {...props}
                 deleteGame={this.deleteGame}
-                games={this.state.games}
+                // games={this.state.games}
               />
             );
           }}
         />
         {/* <Route
-          path="/games/:gameId(\d+)"
-          render={props => {
-            return (
-              <EditGame
-                {...props}
-                hanldleUpdate={this.hanldleUpdate}
-                games={this.state.games}
-              />
-            );
-          }} */}
-
+     path="/games/:gameId(\d+)"
+     render={props => {
+      return (
+       <EditGame
+        {...props}
+        hanldleUpdate={this.hanldleUpdate}
+        games={this.state.games}
+       />
+      );
+     }} */}
         <Route
           path="/games/new"
           render={props => {
             return <GameForm {...props} />;
           }}
         />
-
         <Route
           path="/games/edit"
           render={props => {
             return (
               <EditGame
                 {...props}
-                handleUpdate={this.handleUpdate}
-                game={this.state.games}
+                // handleUpdate={this.handleUpdate}
+                // games={this.state.games}
               />
             );
           }}
         />
         {/* <Route
-          exact
-          path="/gamesJoined"
-          render={props => {
-            return (
-              <GamesJoinedList
-                {...props}
-                deleteGameJoined={this.deleteGameJoined}
-                gamesJoined={this.state.gamesJoined}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/gamesJoined/:gameJoinedId(\d+)"
-          render={props => {
-            return (
-              <GameJoinedDetail
-                {...props}
-                deleteGameJoined={this.deleteGameJoined}
-                gamesJoined={this.state.gamesJoined}
-              />
-            );
-          }}
-        />
-        <Route
-          path="/gamesJoined/join"
-          render={props => {
-            return (
-              <GamesList
-                {...props}
-                joinGame={this.joinGame}
-                ballers={this.state.ballers}
-              />
-            );
-          }}
-        /> */}
-
+     exact
+     path="/gamesJoined"
+     render={props => {
+      return (
+       <GamesJoinedList
+        {...props}
+        deleteGameJoined={this.deleteGameJoined}
+        gamesJoined={this.state.gamesJoined}
+       />
+      );
+     }}
+    />
+    <Route
+     path="/gamesJoined/:gameJoinedId(\d+)"
+     render={props => {
+      return (
+       <GameJoinedDetail
+        {...props}
+        deleteGameJoined={this.deleteGameJoined}
+        gamesJoined={this.state.gamesJoined}
+       />
+      );
+     }}
+    />
+    <Route
+     path="/gamesJoined/join"
+     render={props => {
+      return (
+       <GamesList
+        {...props}
+        joinGame={this.joinGame}
+        ballers={this.state.ballers}
+       />
+      );
+     }}
+    /> */}
         {/* <Route
-          exact
-          path="/ballers"
-          render={props => {
-            if (this.isAuthenticated()) {
-              return (
-                <BallersList
-                  deleteBaller={this.deleteBaller}
-                  games={this.state.games}
-                  gamesJoined={this.state.gamesJoined}
-                  courts={this.state.courts}
-                />
-              );
-            } else {
-              return <Redirect to="/Login" />;
-            }
-          }}
-        /> */}
-
+     exact
+     path="/ballers"
+     render={props => {
+      if (this.isAuthenticated()) {
+       return (
+        <BallersList
+         deleteBaller={this.deleteBaller}
+         games={this.state.games}
+         gamesJoined={this.state.gamesJoined}
+         courts={this.state.courts}
+        />
+       );
+      } else {
+       return <Redirect to="/Login" />;
+      }
+     }}
+    /> */}
+        ​
         <Route path="/login" component={Login} />
       </React.Fragment>
     );
