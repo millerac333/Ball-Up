@@ -216,13 +216,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/games/new"
           render={props => {
-            return (
-              <GameForm
-                {...props}
-                addGame={this.addGame}
-                ballers={this.state.ballers}
-              />
-            );
+            return <GameForm {...props} />;
           }}
         />
 
