@@ -12,9 +12,9 @@ export default class EditGame extends Component {
   //   }
   // Set initial state
   state = {
-    games: this.props.location.game,
-    handleFieldChange: this.handleFieldChange.bind(this)
-    // this: (handleUpdate = this.handleUpdate.bind(this))
+    games: this.props.location.game
+    // handleFieldChange: this.handleFieldChange.bind(this),
+    // handleUpdate: this.handleUpdate.bind(this)
   };
   //     creatorBallerId: this.props.game.creatorBallerId,
   //     joinedBallerId: this.props.game.joinedBallerId,
