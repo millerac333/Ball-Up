@@ -14,9 +14,9 @@ export default class GameForm extends Component {
   };
 
   // Update state whenever an input field is edited
-  handleFieldChange = e => {
+  handleFieldChange = evt => {
     const stateToChange = {};
-    stateToChange[e.target.id] = e.target.value;
+    stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 

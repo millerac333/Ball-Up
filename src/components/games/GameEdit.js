@@ -3,6 +3,13 @@ import GamesManager from "../../modules/GamesManager";
 import { Field, Button, Input, Label, Select } from "bloomer";
 
 export default class EditGame extends Component {
+  //   constructor(props) {
+  //     super(props);
+  //     this.state = { value: "" };
+
+  //     this.handleFieldChange = handleFieldChange.bind(this);
+  //     this.handleUpdate = this.handleUpdate.bind(this);
+  //   }
   // Set initial state
   state = {
     games: this.props.location.game
@@ -22,9 +29,9 @@ export default class EditGame extends Component {
   //   };
 
   // Update state whenever an input field is edited
-  handleFieldChange = e => {
+  handleFieldChange = evt => {
     const stateToChange = {};
-    stateToChange[e.target.id] = e.target.value;
+    stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
@@ -36,7 +43,8 @@ export default class EditGame extends Component {
       locationId: this.state.locationId,
       duration: this.state.duration,
       courtSize: this.state.courtSize
-    }.then(GamesManager.updateAndList("games", this.games.id, updatedGame));
+    };
+    GamesManager.updateAndList("games", this.games.id, updatedGame);
   };
 
   render() {
