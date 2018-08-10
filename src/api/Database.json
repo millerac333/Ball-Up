@@ -44,6 +44,13 @@
       "hours": "no i am not",
       "courtType": "",
       "id": 4
+    },
+    {
+      "name": "NSS",
+      "address": "500 interstate blvd ",
+      "hours": "",
+      "courtType": "",
+      "id": 5
     }
   ],
   "games": [
@@ -78,6 +85,14 @@
       "duration": "sadfasdf",
       "courtSize": "",
       "id": "7ivJKdP"
+    },
+    {
+      "creatorBallerId": "",
+      "joinedBallerId": "9",
+      "locationId": "shu",
+      "duration": "3434",
+      "courtSize": "Half-court",
+      "id": "9frajI2"
     }
   ],
   "joinedGames": [

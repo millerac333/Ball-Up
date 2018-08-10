@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import GamesManager from "../../modules/GamesManager";
-import { Field, Control, Button, Input, Label, Select } from "bloomer";
+// import { Field, Control, Button, Input, Label, Select } from "bloomer";
 
 export default class GameForm extends Component {
   state = {
@@ -37,28 +37,27 @@ export default class GameForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <Field>
-          <Label>Choose Court Location:</Label>
-          <Control>
-            <Input
+        <form onSubmit={this.state.handleUpdate}>
+          <div>
+            <label>Choose Court Location:</label>
+            <input
               type="text"
-              placeholder="Court Location"
-              required="true"
+              value={this.state.locationId}
+              // required="true"
               className="game-location"
-              onChange={this.handleFieldChange}
+              onChange={this.handleFieldChange.bind(this)}
               id="locationId"
             />
-          </Control>
-        </Field>
-        <Field>
-          <Label>Select:</Label>
-          <Control>
-            <Select
+          </div>
+          <div>
+            <label>Select:</label>
+            <select
               type="option"
-              required="true"
+              // required="true"
               className="game-location"
-              onChange={this.handleFieldChange}
+              onChange={this.handleFieldChange.bind(this)}
               id="joinedBallerId"
+              value={this.state.joinedBallerId}
             >
               <option>0</option>
               <option>9</option>
@@ -70,46 +69,39 @@ export default class GameForm extends Component {
               <option>3</option>
               <option>2</option>
               <option>1</option>
-            </Select>
-          </Control>
-        </Field>
-        <Field>
-          <Label>Duration of Game:</Label>
-          <Control>
-            <Input
+            </select>
+          </div>
+          <div>
+            <label>Duration of Game:</label>
+            <input
               type="EX:12PM-2PM"
-              required="true"
+              // required="true"
               className="game-duration"
-              onChange={this.handleFieldChange}
+              onChange={this.handleFieldChange.bind(this)}
               id="duration"
-              placeholder="EX:12PM-2PM"
+              value={this.state.duration}
             />
-          </Control>
-        </Field>
-        <Field>
-          <Label>Select:</Label>
-          <Control>
-            <Select
+          </div>
+          <div>
+            <label>Select:</label>
+            <select
               type="option"
-              placeholder="Court Location"
-              required="true"
-              className="game-location"
-              onChange={this.handleFieldChange}
+              value={this.state.courtSize}
+              // required="true"
+              className="game-courtSize"
+              onChange={this.handleFieldChange.bind(this)}
               id="courtSize"
             >
               <option>Full-court</option>
               <option>Half-court</option>
-            </Select>
-          </Control>
-        </Field>
-        <Field>
-          <Control>
-            <Button isColor="primary" type="submit" onClick={this.addGame}>
+            </select>
+          </div>
+          <div>
+            <button type="submit" onClick={this.addGame}>
               Submit
-            </Button>
-          </Control>
-          <Control />
-        </Field>
+            </button>
+          </div>
+        </form>
       </React.Fragment>
     );
   }
