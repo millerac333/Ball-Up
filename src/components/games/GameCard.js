@@ -3,16 +3,24 @@ import { Link } from "react-router-dom";
 // import ApplicationViews from "../ApplicationViews";
 
 export default class GameCard extends Component {
-  state = {};
+  state = {
+    games: this.props.games,
+    creatorBallerId: this.props.games.creatorBallerId,
+    joinedBallerId: this.props.games.joinedBallerId,
+    locationId: this.props.games.locationId,
+    duration: this.props.games.duration,
+    courtSize: this.props.games.courtSize
+  };
 
   render() {
-    console.log("PROPS", this.props);
+    console.log("PROPS", this.props.games);
+    console.log("creatorid", this.props.games.creatorBallerId);
     return (
       <React.Fragment>
         <div className="games-card">
           <div className="games-card-body">
             <h5 className="games-card-courtLocation">
-              {/* {this.props.games.locationId} */}
+              {this.props.games.locationId}
             </h5>
           </div>
           <div className="games-card-duraton">
@@ -35,7 +43,9 @@ export default class GameCard extends Component {
               className="games-card-link"
               to={{
                 pathname: "/games/edit",
-                state: { games: this.state.games }
+                state: {
+                  games: this.props.games
+                }
               }}
             >
               Edit
@@ -51,7 +61,7 @@ export default class GameCard extends Component {
           <div>
             <button
               type="delete"
-              onClick={() => this.props.deleteGame(this.props.game.id)}
+              onClick={() => this.props.deleteGame(this.props.games.id)}
               className="btn btn-primary"
             >
               Delete

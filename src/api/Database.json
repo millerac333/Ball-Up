@@ -51,6 +51,13 @@
       "hours": "",
       "courtType": "",
       "id": 5
+    },
+    {
+      "name": "shu",
+      "address": "favorite ",
+      "hours": "now ",
+      "courtType": "",
+      "id": 6
     }
   ],
   "games": [
@@ -63,36 +70,20 @@
       "id": "2"
     },
     {
-      "creatorBallerId": "2",
-      "joinedBallerId": "1",
-      "locationId": "2",
-      "duration": "12PM-2PM",
-      "courtSize": "Half-court",
-      "id": "1"
-    },
-    {
-      "creatorBallerId": "",
-      "joinedBallerId": "8",
-      "locationId": "jisie",
-      "duration": "2-4pm",
-      "courtSize": "Half-court",
-      "id": "DeFO2sF"
-    },
-    {
-      "creatorBallerId": "",
-      "joinedBallerId": "8",
-      "locationId": "gasldjf",
-      "duration": "sadfasdf",
-      "courtSize": "",
-      "id": "7ivJKdP"
-    },
-    {
-      "creatorBallerId": "",
+      "creatorBallerId": "1",
       "joinedBallerId": "9",
-      "locationId": "shu",
-      "duration": "3434",
+      "locationId": "Aaron",
+      "duration": "COKE",
       "courtSize": "Half-court",
-      "id": "9frajI2"
+      "id": "Os~2Jhy"
+    },
+    {
+      "creatorBallerId": "1",
+      "joinedBallerId": "2",
+      "locationId": "shu",
+      "duration": "is always wrong ",
+      "courtSize": "Half-court",
+      "id": "FKWhV1q"
     }
   ],
   "joinedGames": [

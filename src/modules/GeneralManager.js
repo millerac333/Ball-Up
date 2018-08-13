@@ -21,8 +21,8 @@ export default Object.create(null, {
     }
   },
   patchData: {
-    value: function(resource, resourceObject) {
-      return fetch(`${settings.remoteURL}/${resource}`, {
+    value: function(resource, id, resourceObject) {
+      return fetch(`${settings.remoteURL}/${resource}/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"

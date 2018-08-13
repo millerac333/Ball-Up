@@ -33,7 +33,9 @@ export default Object.create(GeneralManager, {
   },
   removeAndList: {
     value: function(id) {
-      return this.deleteData("games", id).then(() => this.all());
+      return this.deleteData("games", id)
+        .then(() => this.all("games"))
+        .then(() => this.props.history.push("/games"));
     }
   },
   updateAndList: {

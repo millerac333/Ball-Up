@@ -25,12 +25,12 @@ export default class ApplicationViews extends Component {
     gamesJoined: []
   };
 
-  deleteGame = id =>
-    GamesManager.removeAndList(id).then(games =>
-      this.setState({
-        games: games
-      })
-    );
+  // deleteGame = id =>
+  //   GamesManager.removeAndList(id).then(games =>
+  //     this.setState({
+  //       games: games
+  //     })
+  //   );
   deleteJoinedGames = id =>
     JoinedGamesManager.removeAndList(id).then(joinedGames =>
       this.setState({
@@ -61,12 +61,12 @@ export default class ApplicationViews extends Component {
         courts: courts
       })
     );
-  editGame = id =>
-    GamesManager.updateAndList(id).then(games =>
-      this.setState({
-        games: games
-      })
-    );
+  // editGame = id =>
+  //   GamesManager.updateAndList(id).then(games =>
+  //     this.setState({
+  //       games: games
+  //     })
+  //   );
   handleFieldChange = e => {
     const stateToChange = {};
     stateToChange[e.target.id] = e.target.value;
@@ -125,7 +125,7 @@ export default class ApplicationViews extends Component {
   componentDidMount() {
     const _state = {};
     // GamesManager.listWithCaretaker()
-    JoinedGamesManager.all()
+    GamesManager.all()
       .then(joinedGames => (_state.joinedGames = joinedGames))
       .then(() => BallersManager.all())
       .then(ballers => (_state.ballers = ballers))
@@ -209,7 +209,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/games/new"
           render={props => {
-            return <GameForm {...props} />;
+            return <GameForm {...props} addGame={this.addGame} />;
           }}
         />
         <Route
@@ -219,7 +219,8 @@ export default class ApplicationViews extends Component {
               <EditGame
                 {...props}
                 // handleUpdate={this.handleUpdate}
-                // games={this.state.games}
+                // handleFieldChange={this.handleFieldChange}
+                games={props.location.state.games}
               />
             );
           }}

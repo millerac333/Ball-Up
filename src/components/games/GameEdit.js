@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import GamesManager from "../../modules/GamesManager";
-// import { Field, Button, Input, Label, Select } from "bloomer";
+import GeneralManager from "../../modules/GeneralManager";
 
 export default class EditGame extends Component {
   //   constructor(props) {
@@ -12,29 +11,17 @@ export default class EditGame extends Component {
   //   }
   // Set initial state
   state = {
-    games: this.props.location.game
-    // handleFieldChange: this.handleFieldChange.bind(this),
-    // handleUpdate: this.handleUpdate.bind(this)
+    creatorBallerId: this.props.games.creatorBallerId,
+    joinedBallerId: this.props.games.joinedBallerId,
+    locationId: this.props.games.locationId,
+    duration: this.props.games.duration,
+    courtSize: this.props.games.courtSize
   };
-  //     creatorBallerId: this.props.game.creatorBallerId,
-  //     joinedBallerId: this.props.game.joinedBallerId,
-  //     locationId: this.props.game.locationId,
-  //     duration: this.props.game.duration,
-  //     courtSize: this.props.game.courtSize
-
-  //   state = {
-  //     creatorBallerId: this.props.location.state.game.creatorBallerId,
-  //     joinedBallerId: this.props.location.state.game.joinedBallerId,
-  //     courtSize: this.props.location.state.game.courtSize,
-  //     locationId: this.props.location.state.game.locationId,
-  //     duration: this.props.location.state.game.duration,
-  //     id: this.props.location.state.game.id
-  //   };
 
   // Update state whenever an input field is edited
-  handleFieldChange = evt => {
+  handleFieldChange = e => {
     const stateToChange = {};
-    stateToChange[evt.target.id] = evt.target.value;
+    stateToChange[e.target.id] = e.target.value;
     this.setState(stateToChange);
   };
 
@@ -47,21 +34,25 @@ export default class EditGame extends Component {
       duration: this.state.duration,
       courtSize: this.state.courtSize
     };
-    GamesManager.updateAndList("games", this.games.id, updatedGame);
+
+    GeneralManager.patchData("games", this.props.games.id, updatedGame).then(
+      () => this.props.history.push("/games")
+    );
   };
 
   render() {
+    // console.log(this.props.location.state.games);
     return (
       <React.Fragment>
-        <form onSubmit={this.state.handleUpdate}>
+        <form onSubmit={this.handleUpdate}>
           <div>
             <label>Choose Court Location:</label>
             <input
               type="text"
               value={this.state.locationId}
-              //   required="true"
+              //   placeholder={this.props.location.state.games.locationId}
               className="game-edit-location"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="locationId"
             />
           </div>
@@ -69,9 +60,9 @@ export default class EditGame extends Component {
             <label>Select:</label>
             <select
               type="option"
-              //   required="true"
+              //   placeholder={this.props.location.state.games.joinedBallerId}
               className="game-edit-location"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="joinedBallerId"
               value={this.state.joinedBallerId}
             >
@@ -91,9 +82,9 @@ export default class EditGame extends Component {
             <label>Duration of Game:</label>
             <input
               type="EX:12PM-2PM"
-              //   required="true"
+              //   placeholder={this.props.location.state.games.duration}
               className="game-edit-duration"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="duration"
               value={this.state.duration}
             />
@@ -103,9 +94,9 @@ export default class EditGame extends Component {
             <select
               type="option"
               value={this.state.courtSize}
-              //   required="true"
+              //   placeholder={this.props.location.state.games.courtSize}
               className="game-edit-courtSize"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="courtSize"
             >
               <option>Full-court</option>
