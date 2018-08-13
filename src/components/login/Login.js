@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Login.css";
 // import GeneralManager from "../../modules/GeneralManager";
-import BallersManager from "../../modules/BallersManager";
+import UsersManager from "../../modules/UsersManager";
 
 export default class Login extends Component {
   // Set initial state
   state = {
-    ballername: "",
+    username: "",
     password: ""
   };
   // Update state whenever an input field is edited
@@ -19,75 +19,69 @@ export default class Login extends Component {
   handleLogin = e => {
     e.preventDefault();
 
-    BallersManager.getAllData(
-      `ballers?ballername=${this.state.ballername}`
-    ).then(baller => {
-      if (
-        baller.length === 0 ||
-        baller[0].ballername !== this.state.ballername
-      ) {
-        alert("Empty value or incorrect/unregistered Baller, try again");
-        return;
+    UsersManager.getAllData(`users?username=${this.state.username}`).then(
+      user => {
+        if (user.length === 0 || user[0].username !== this.state.username) {
+          alert("Empty value or incorrect/unregistered Baller, try again");
+          return;
+        }
+        if (user.length === 0 || user[0].password !== this.state.password) {
+          alert("The password you entered is incorrect; please try again");
+          return;
+        } else if (
+          user[0].ballername === this.state.username &&
+          user[0].password === this.state.password
+        ) {
+          sessionStorage.setItem("currentUser", user[0].id);
+          console.log(
+            "currentUser id",
+            user[0].id,
+            "currentUserName",
+            user[0].username
+          );
+          localStorage.setItem(
+            "credentials",
+            JSON.stringify({
+              username: this.state.username,
+              password: this.state.password
+            })
+          );
+          this.props.history.push("/");
+        }
       }
-      if (baller.length === 0 || baller[0].password !== this.state.password) {
-        alert("The password you entered is incorrect; please try again");
-        return;
-      } else if (
-        baller[0].ballername === this.state.ballername &&
-        baller[0].password === this.state.password
-      ) {
-        sessionStorage.setItem("currentUser", baller[0].id);
-        console.log(
-          "currentUser id",
-          baller[0].id,
-          "currentUserName",
-          baller[0].ballername
-        );
-        localStorage.setItem(
-          "credentials",
-          JSON.stringify({
-            ballername: this.state.ballername,
-            password: this.state.password
-          })
-        );
-        this.props.history.push("/");
-      }
-    });
+    );
     this.props.history.push("/");
   };
-  signUpBaller = e => {
+  signUpUser = e => {
     e.preventDefault();
 
-    BallersManager.getAllData(
-      `ballers?ballername=${this.state.ballername}`
-    ).then(baller => {
-      if (
-        baller.length === 0 ||
-        baller[0].ballername === this.state.ballername
-      ) {
-        alert(
-          "Sorry, the Ballername is taken. Please try a different Ballername"
-        );
-        return;
+    UsersManager.getAllData(`users?username=${this.state.username}`).then(
+      user => {
+        if (user.length === 0 || user[0].username === this.state.username) {
+          alert(
+            "Sorry, the Ballername is taken. Please try a different Ballername"
+          );
+          return;
+        }
+
+        UsersManager.add({
+          username: this.state.username,
+          password: this.state.password
+        }).then(logNewUser => {
+          sessionStorage.setItem("currentUser", logNewUser.id);
+          console.log("logNewUser", logNewUser.id);
+
+          localStorage.setItem(
+            "credentials",
+            JSON.stringify({
+              username: this.state.username,
+              password: this.state.password
+            })
+          );
+          this.props.history.push("/");
+        });
       }
-
-      BallersManager.add({
-        ballername: this.state.ballername,
-        password: this.state.password
-      }).then(logNewBaller => {
-        sessionStorage.setItem("currentUser", logNewBaller.id);
-        console.log("logNewBaller", logNewBaller.id);
-
-        localStorage.setItem(
-          "credentials",
-          JSON.stringify({
-            ballername: this.state.ballername,
-            password: this.state.password
-          })
-        );
-        this.props.history.push("/");
-      });
-    });
+    );
   };
 
   render() {
@@ -99,11 +93,11 @@ export default class Login extends Component {
             Please Log-in OR Sign-up
           </h3>
           <div className="form-group">
-            <label htmlFor="ballername">Ballername</label>
+            <label htmlFor="username">Ballername</label>
             <input
               onChange={this.handleFieldChange}
               type="text"
-              id="ballername"
+              id="username"
               placeholder="Ballername"
               required=""
               autoFocus=""
@@ -126,7 +120,7 @@ export default class Login extends Component {
           <button
             type="button"
             className="btn-warning"
-            onClick={e => this.signUpBaller(e)}
+            onClick={e => this.signUpUser(e)}
           >
             Sign-Up to Ball-Up
           </button>

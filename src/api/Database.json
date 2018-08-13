@@ -1,17 +1,17 @@
 {
-  "ballers": [
+  "users": [
     {
-      "ballername": "Test User 1",
+      "username": "Test User 1",
       "password": "password",
       "id": 1
     },
     {
-      "ballername": "Test User 2",
+      "username": "Test User 2",
       "password": "password",
       "id": 2
     },
     {
-      "ballername": "Baller4Life",
+      "username": "Baller4Life",
       "password": "espn",
       "id": 3
     }
@@ -30,72 +30,36 @@
       "hours": "8AM-8PM",
       "type": false,
       "id": 2
-    },
-    {
-      "name": "Nuggget",
-      "address": "123 Word St",
-      "hours": "24hr",
-      "courtType": "",
-      "id": 3
-    },
-    {
-      "name": "Hi",
-      "address": "are you there",
-      "hours": "no i am not",
-      "courtType": "",
-      "id": 4
-    },
-    {
-      "name": "NSS",
-      "address": "500 interstate blvd ",
-      "hours": "",
-      "courtType": "",
-      "id": 5
-    },
-    {
-      "name": "shu",
-      "address": "favorite ",
-      "hours": "now ",
-      "courtType": "",
-      "id": 6
     }
   ],
   "games": [
     {
-      "creatorBallerId": "1",
-      "joinedBallerId": "2",
-      "locationId": "1",
-      "duration": "12PM-2PM",
-      "courtSize": "Full-court",
-      "id": "2"
+      "creatorUserId": "1",
+      "joinedUserId": "5",
+      "locationId": "er",
+      "duration": "2pm-3pm",
+      "courtSize": "Half-court",
+      "id": 1
     },
     {
-      "creatorBallerId": "1",
-      "joinedBallerId": "9",
+      "creatorUserId": "1",
+      "joinedUserId": "9",
       "locationId": "Aaron",
       "duration": "COKE",
       "courtSize": "Half-court",
-      "id": "Os~2Jhy"
-    },
-    {
-      "creatorBallerId": "1",
-      "joinedBallerId": "2",
-      "locationId": "shu",
-      "duration": "is always wrong ",
-      "courtSize": "Half-court",
-      "id": "FKWhV1q"
+      "id": 2
     }
   ],
   "joinedGames": [
     {
       "joinedGameId": "1",
-      "gameId": "1",
-      "joinedBallerId": "2"
+      "joinedUserId": "2",
+      "id": 1
     },
     {
       "joinedGameId": "2",
-      "gameId": "2",
-      "joinedBallerId": "1"
+      "joinedBallerId": "1",
+      "id": 2
     }
   ]
 }

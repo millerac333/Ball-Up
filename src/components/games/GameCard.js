@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import ApplicationViews from "../ApplicationViews";
 
 export default class GameCard extends Component {
   state = {
     games: this.props.games,
-    creatorBallerId: this.props.games.creatorBallerId,
-    joinedBallerId: this.props.games.joinedBallerId,
+    creatorUserId: this.props.games.creatorUserId,
+    joinedUserId: this.props.games.joinedUserId,
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
     courtSize: this.props.games.courtSize
@@ -14,7 +13,7 @@ export default class GameCard extends Component {
 
   render() {
     console.log("PROPS", this.props.games);
-    console.log("creatorid", this.props.games.creatorBallerId);
+    console.log("creatorid", this.props.games.creatorUserId);
     return (
       <React.Fragment>
         <div className="games-card">
@@ -31,11 +30,11 @@ export default class GameCard extends Component {
           <div className="games-card-courtSize">
             {this.props.games.courtSize}
           </div>
-          <div className="games-card-createdBallerId">
-            <label htmlFor="games-card-createdBallerId">Game Created By</label>
+          <div className="games-card-createdUserId">
+            <label htmlFor="games-card-createdUserId">Game Created By</label>
           </div>
-          <div className="games-card-createdBallerId">
-            <label htmlFor="games-card-joinedBallerId">Game Joined By</label>
+          <div className="games-card-createdBUserId">
+            <label htmlFor="games-card-joinedUSerId">Game Joined By</label>
             {this.props.games.joinedBallerId}
           </div>
           <div>
@@ -50,13 +49,6 @@ export default class GameCard extends Component {
             >
               Edit
             </Link>
-            {/* <button
-              type="edit"
-              onClick={() => this.props.editGame(this.props.game.id)}
-              className="btn btn-primary"
-            >
-              Edit
-            </button> */}
           </div>
           <div>
             <button

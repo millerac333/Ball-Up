@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import GamesManager from "../../modules/GamesManager";
-// import { Field, Control, Button, Input, Label, Select } from "bloomer";
 
 export default class GameForm extends Component {
   state = {
     // games: this.props.games,
-    creatorBallerId: "",
-    joinedBallerId: "",
+    creatorUserId: "",
+    joinedUserId: "",
     locationId: "",
     duration: "",
     courtSize: "",
@@ -23,8 +22,8 @@ export default class GameForm extends Component {
   addGame = e => {
     e.preventDefault();
     const game = {
-      creatorBallerId: this.state.creatorBallerId,
-      joinedBallerId: this.state.joinedBallerId,
+      creatorUserId: this.state.creatorUserId,
+      joineduserId: this.state.joinedUserId,
       locationId: this.state.locationId,
       duration: this.state.duration,
       courtSize: this.state.courtSize
@@ -43,9 +42,9 @@ export default class GameForm extends Component {
             <input
               type="text"
               value={this.state.locationId}
-              // required="true"
+              required="true"
               className="game-location"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="locationId"
             />
           </div>
@@ -53,11 +52,11 @@ export default class GameForm extends Component {
             <label>Select:</label>
             <select
               type="option"
-              // required="true"
-              className="game-location"
-              onChange={this.handleFieldChange.bind(this)}
+              required="true"
+              className="game-joinedUsers"
+              onChange={this.handleFieldChange}
               id="joinedBallerId"
-              value={this.state.joinedBallerId}
+              value={this.state.joinedUserId}
             >
               <option>0</option>
               <option>9</option>
@@ -75,9 +74,9 @@ export default class GameForm extends Component {
             <label>Duration of Game:</label>
             <input
               type="EX:12PM-2PM"
-              // required="true"
+              required="true"
               className="game-duration"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="duration"
               value={this.state.duration}
             />
@@ -87,9 +86,9 @@ export default class GameForm extends Component {
             <select
               type="option"
               value={this.state.courtSize}
-              // required="true"
+              required="true"
               className="game-courtSize"
-              onChange={this.handleFieldChange.bind(this)}
+              onChange={this.handleFieldChange}
               id="courtSize"
             >
               <option>Full-court</option>

@@ -7,33 +7,13 @@ import { Link } from "react-router-dom";
 export default class GamesList extends Component {
   state = {
     games: [],
-    creatorBallerId: "",
-    joinedBallerId: "",
+    creatorUserId: "",
+    joinedUserId: "",
     locationId: "",
     duration: "",
     courtSize: "",
     id: ""
   };
-  // handleFieldChange = e => {
-  //   const stateToChange = {};
-  //   stateToChange[e.target.id] = e.target.value;
-  //   this.setState(stateToChange);
-  // };
-
-  // handleUpdate = e => {
-  //   e.preventDefault();
-  //   const updatedGame = {
-  //     creatorBallerId: this.state.creatorBallerId,
-  //     joinedBallerId: this.state.joinedBallerId,
-  //     locationId: this.state.locationId,
-  //     duration: this.state.duration,
-  //     courtSize: this.state.courtSize
-  //   };
-
-  //   GeneralManager.patchData("games", this.games.id, updatedGame).then(() =>
-  //     this.props.history.push("/games")
-  //   );
-  // };
 
   deleteGame = gameID => {
     GeneralManager.deleteData("games", gameID)
@@ -48,11 +28,9 @@ export default class GamesList extends Component {
   };
 
   componentDidMount() {
-    // GamesManager.listWithCaretaker()
     GamesManager.all().then(games => {
       this.setState({ games: games });
     });
-    // .then(studentExercises => {this.setState({ studentExercises })})
   }
   render() {
     console.log(this.state.games);

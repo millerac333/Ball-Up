@@ -8,8 +8,8 @@ import GameForm from "./games/GameForm";
 // import GamesJoinedList from "./games-joined/GamesJoinedList";
 // import GameJoinedDetail from "./games-joined/GameJoinedDetail";
 import GamesManager from "../modules/GamesManager";
-import JoinedGamesManager from "../modules/JoinedGamesManager";
-import BallersManager from "../modules/BallersManager";
+// import JoinedGamesManager from "../modules/JoinedGamesManager";
+import UsersManager from "../modules//UsersManager";
 import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
 import EditGame from "./games/GameEdit";
@@ -20,7 +20,7 @@ import EditGame from "./games/GameEdit";
 
 export default class ApplicationViews extends Component {
   state = {
-    ballers: [],
+    users: [],
     courts: [],
     gamesJoined: []
   };
@@ -31,94 +31,47 @@ export default class ApplicationViews extends Component {
   //       games: games
   //     })
   //   );
-  deleteJoinedGames = id =>
-    JoinedGamesManager.removeAndList(id).then(joinedGames =>
-      this.setState({
-        joinedGames: joinedGames
-      })
-    );
-  addGames = games =>
-    GamesManager.addAndList(games).then(games =>
-      this.setState({
-        games: games
-      })
-    );
-  addJoinedGames = joinedGames =>
-    GamesManager.addAndList(joinedGames).then(joinedGames =>
-      this.setState({
-        joinedGames: joinedGames
-      })
-    );
-  addBallers = ballers =>
-    BallersManager.addAndList(ballers).then(ballers =>
-      this.setState({
-        ballers: ballers
-      })
-    );
-  addCourts = courts =>
-    CourtsManager.addAndList(courts).then(courts =>
-      this.setState({
-        courts: courts
-      })
-    );
+  // deleteJoinedGames = id =>
+  //   JoinedGamesManager.removeAndList(id).then(joinedGames =>
+  //     this.setState({
+  //       joinedGames: joinedGames
+  //     })
+  //   );
+  // addGames = games =>
+  //   GamesManager.addAndList(games).then(games =>
+  //     this.setState({
+  //       games: games
+  //     })
+  //   );
+  // addJoinedGames = joinedGames =>
+  //   GamesManager.addAndList(joinedGames).then(joinedGames =>
+  //     this.setState({
+  //       joinedGames: joinedGames
+  //     })
+  //   );
+  // addUsers = users =>
+  //   UsersManager.addAndList(users).then(users =>
+  //     this.setState({
+  //       users: users
+  //     })
+  //   );
+  // addCourts = courts =>
+  //   CourtsManager.addAndList(courts).then(courts =>
+  //     this.setState({
+  //       courts: courts
+  //     })
+  //   );
   // editGame = id =>
   //   GamesManager.updateAndList(id).then(games =>
   //     this.setState({
   //       games: games
   //     })
   //   );
-  handleFieldChange = e => {
-    const stateToChange = {};
-    stateToChange[e.target.id] = e.target.value;
-    this.setState(stateToChange);
-  };
-
-  // handleUpdate = e => {
-  //   e.preventDefault();
-
-  //   const updatedGame = {
-  //     creatorBallerId: this.state.creatorBallerId,
-  //     joinedBallerId: this.state.joinedBallerId,
-  //     locationId: this.state.locationId,
-  //     duration: this.state.duration,
-  //     courtSize: this.state.courtSize
-  //   };
-  //   console.log(updatedGame);
-
-  //   return fetch(`${settings.remoteURL}/${this.props.location.state.game.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(updatedGame)
-  //   }).then(e => e.json());
-
-  // getAllData: {
-  // value: resource => {
-  //  return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
-
-  // })
+  // handleFieldChange = e => {
+  //   const stateToChange = {};
+  //   stateToChange[e.target.id] = e.target.value;
+  //   this.setState(stateToChange);
   // };
-
-  // patchData: {
-  //  value: function(resource, resourceObject) {
-  //   return fetch(`${settings.remoteURL}/${resource}`, {
-  //    method: "PATCH",
-  //    headers: {
-  //     "Content-Type": "application/json"
-  //    },
-  //    body: JSON.stringify(resourceObject)
-  //   }).then(e => e.json());
-  //  }
-  // }
-  // ).then(
-  //   getAllData: {
-  //    value: resource => {
-  //     return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());
-  //    }
-  //   })
-  //  }
-  // }
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
 
@@ -127,8 +80,8 @@ export default class ApplicationViews extends Component {
     // GamesManager.listWithCaretaker()
     GamesManager.all()
       .then(joinedGames => (_state.joinedGames = joinedGames))
-      .then(() => BallersManager.all())
-      .then(ballers => (_state.ballers = ballers))
+      .then(() => UsersManager.all())
+      .then(users => (_state.users = users))
       .then(() => CourtsManager.all())
       .then(courts => (_state.courts = courts))
       .then(() => {
@@ -177,7 +130,7 @@ export default class ApplicationViews extends Component {
               <CourtForm
                 {...props}
                 addCourt={this.addCourt}
-                ballers={this.state.ballers}
+                // users={this.state.users}
               />
             );
           }}
@@ -215,14 +168,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/games/edit"
           render={props => {
-            return (
-              <EditGame
-                {...props}
-                // handleUpdate={this.handleUpdate}
-                // handleFieldChange={this.handleFieldChange}
-                games={props.location.state.games}
-              />
-            );
+            return <EditGame {...props} games={props.location.state.games} />;
           }}
         />
         {/* <Route
@@ -257,19 +203,19 @@ export default class ApplicationViews extends Component {
        <GamesList
         {...props}
         joinGame={this.joinGame}
-        ballers={this.state.ballers}
+        users={this.state.users}
        />
       );
      }}
     /> */}
         {/* <Route
      exact
-     path="/ballers"
+     path="/users"
      render={props => {
       if (this.isAuthenticated()) {
        return (
-        <BallersList
-         deleteBaller={this.deleteBaller}
+        <UsersList
+         deleteUser={this.deleteUser}
          games={this.state.games}
          gamesJoined={this.state.gamesJoined}
          courts={this.state.courts}

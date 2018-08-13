@@ -2,17 +2,9 @@ import React, { Component } from "react";
 import GeneralManager from "../../modules/GeneralManager";
 
 export default class EditGame extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = { value: "" };
-
-  //   this.handleFieldChange = handleFieldChange.bind(this);
-  //   this.handleUpdate = this.handleUpdate.bind(this);
-  //   }
-  // Set initial state
   state = {
-    creatorBallerId: this.props.games.creatorBallerId,
-    joinedBallerId: this.props.games.joinedBallerId,
+    creatorUserId: this.props.games.creatorUserId,
+    joinedUserId: this.props.games.joinedUserId,
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
     courtSize: this.props.games.courtSize
@@ -28,8 +20,8 @@ export default class EditGame extends Component {
   handleUpdate = e => {
     e.preventDefault();
     const updatedGame = {
-      creatorBallerId: this.state.creatorBallerId,
-      joinedBallerId: this.state.joinedBallerId,
+      creatorUserId: this.state.creatorUserId,
+      joinedUserId: this.state.joinedUserId,
       locationId: this.state.locationId,
       duration: this.state.duration,
       courtSize: this.state.courtSize
@@ -50,7 +42,6 @@ export default class EditGame extends Component {
             <input
               type="text"
               value={this.state.locationId}
-              //   placeholder={this.props.location.state.games.locationId}
               className="game-edit-location"
               onChange={this.handleFieldChange}
               id="locationId"
@@ -60,11 +51,10 @@ export default class EditGame extends Component {
             <label>Select:</label>
             <select
               type="option"
-              //   placeholder={this.props.location.state.games.joinedBallerId}
               className="game-edit-location"
               onChange={this.handleFieldChange}
               id="joinedBallerId"
-              value={this.state.joinedBallerId}
+              value={this.state.joinedUserId}
             >
               <option>0</option>
               <option>9</option>
@@ -82,7 +72,6 @@ export default class EditGame extends Component {
             <label>Duration of Game:</label>
             <input
               type="EX:12PM-2PM"
-              //   placeholder={this.props.location.state.games.duration}
               className="game-edit-duration"
               onChange={this.handleFieldChange}
               id="duration"
@@ -94,7 +83,6 @@ export default class EditGame extends Component {
             <select
               type="option"
               value={this.state.courtSize}
-              //   placeholder={this.props.location.state.games.courtSize}
               className="game-edit-courtSize"
               onChange={this.handleFieldChange}
               id="courtSize"
