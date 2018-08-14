@@ -65,7 +65,7 @@
     {
       "creatorUserId": "1",
       "joinedUserId": "5",
-      "locationId": "er",
+      "locationId": "4",
       "duration": "2pm-3pm",
       "courtSize": false,
       "id": 1
@@ -85,6 +85,14 @@
       "duration": "COKE",
       "courtSize": "Half-court",
       "id": 3
+    },
+    {
+      "creatorUserId": "",
+      "joinedUserId": "",
+      "locationId": "3",
+      "duration": "COKE",
+      "courtSize": "Half-court",
+      "id": 4
     }
   ],
   "joinedGames": [

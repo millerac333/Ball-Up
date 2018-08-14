@@ -36,18 +36,25 @@ export default class EditGame extends Component {
 
   render() {
     // console.log(this.props.location.state.games);
-
-    let courts = this.props.state.courts;
-    let optionItems = courts.map(court => (
-      <option key={court.name}>{court.name}</option>
-    ));
-
     return (
       <React.Fragment>
         <form onSubmit={this.handleUpdate}>
           <div>
             <label>Choose Court Location:</label>
-            <select>{optionItems}</select>
+            <select
+              type="option"
+              value={this.state.locationId}
+              required="true"
+              className="game-location"
+              onChange={this.handleFieldChange}
+              id="locationId"
+            >
+              {this.props.courts.map(e => (
+                <option key={e.id} value={e.id}>
+                  {e.name}
+                </option>
+              ))}
+            </select>
           </div>
           {/* </select>
           </div> */}
