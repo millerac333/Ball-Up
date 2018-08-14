@@ -24,6 +24,11 @@
       "username": "ShuMaker",
       "password": "baller",
       "id": 5
+    },
+    {
+      "username": "Jenna",
+      "password": "coke",
+      "id": 6
     }
   ],
   "courts": [
@@ -40,6 +45,20 @@
       "hours": "8AM-8PM",
       "type": false,
       "id": 2
+    },
+    {
+      "name": "Bear Court ",
+      "address": "333 222 st",
+      "hours": "4am -6pm",
+      "courtType": "",
+      "id": 3
+    },
+    {
+      "name": "Wolf court ",
+      "address": "66e33 street ",
+      "hours": "4-8",
+      "courtType": "",
+      "id": 4
     }
   ],
   "games": [
@@ -58,6 +77,14 @@
       "duration": "COKE",
       "courtSize": true,
       "id": 2
+    },
+    {
+      "creatorUserId": "",
+      "joineduserId": "",
+      "locationId": "4",
+      "duration": "COKE",
+      "courtSize": "Half-court",
+      "id": 3
     }
   ],
   "joinedGames": [

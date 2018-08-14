@@ -20,13 +20,13 @@ export default class CourtForm extends Component {
 
   addCourt = e => {
     e.preventDefault();
-    const court = {
+    const courts = {
       name: this.state.courtName,
       address: this.state.address,
       hours: this.state.hours,
       courtType: this.state.courtType
     };
-    CourtsManager.add(court).then(() => {
+    CourtsManager.add(courts).then(() => {
       this.props.history.push("/courts");
     });
   };

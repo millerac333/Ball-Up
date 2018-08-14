@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import GeneralManager from "../../modules/GeneralManager";
-import UsersManager from "../../modules/UsersManager";
+// import UsersManager from "../../modules/UsersManager";
 
 export default class Login extends Component {
   // Set initial state
@@ -18,8 +18,7 @@ export default class Login extends Component {
   // Simplistic handler for login submit
   handleLogin = e => {
     e.preventDefault();
-
-    UsersManager.getAllData(`users?username=${this.state.username}`).then(
+    GeneralManager.getAllData(`users?username=${this.state.username}`).then(
       user => {
         if (user.length === 0 || user[0].username !== this.state.username) {
           alert("Empty value or incorrect/unregistered Baller, try again");
@@ -39,7 +38,7 @@ export default class Login extends Component {
             "currentUserName",
             user[0].username
           );
-          localStorage.setItem(
+          sessionStorage.setItem(
             "credentials",
             JSON.stringify({
               username: this.state.username,
@@ -90,7 +89,7 @@ export default class Login extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="loginForm" onSubmit={this.handleLogin}>
+        <form className="loginForm">
           <h1 className="h1 mb-1 font-weight-normal">Ball-Up</h1>
           <h3 className="h3 mb-3 font-weight-normal">
             Please Log-in OR Sign-up
@@ -117,7 +116,12 @@ export default class Login extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onSubmit={this.handleLogin}
+            // onClick={e => this.handleLogin(e)}
+          >
             Log-In
           </button>
           <button

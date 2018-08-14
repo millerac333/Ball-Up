@@ -7,7 +7,9 @@ export default class EditGame extends Component {
     joinedUserId: this.props.games.joinedUserId,
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
-    courtSize: this.props.games.courtSize
+    courtSize: this.props.games.courtSize,
+    courts: this.props.courts,
+    name: this.props.courts.name
   };
 
   // Update state whenever an input field is edited
@@ -34,19 +36,21 @@ export default class EditGame extends Component {
 
   render() {
     // console.log(this.props.location.state.games);
+
+    let courts = this.props.state.courts;
+    let optionItems = courts.map(court => (
+      <option key={court.name}>{court.name}</option>
+    ));
+
     return (
       <React.Fragment>
         <form onSubmit={this.handleUpdate}>
           <div>
             <label>Choose Court Location:</label>
-            <input
-              type="text"
-              value={this.state.locationId}
-              className="game-edit-location"
-              onChange={this.handleFieldChange}
-              id="locationId"
-            />
+            <select>{optionItems}</select>
           </div>
+          {/* </select>
+          </div> */}
           <div>
             <label>Select:</label>
             <select

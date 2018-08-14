@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GamesManager from "../../modules/GamesManager";
+// import CourtsManager from "../../modules/CourtsManager";
 
 export default class GameForm extends Component {
   state = {
@@ -10,8 +11,9 @@ export default class GameForm extends Component {
     duration: "",
     courtSize: "",
     id: ""
+    // courts: this.props.courts
   };
-
+  //html select dropdowns
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -23,7 +25,7 @@ export default class GameForm extends Component {
     e.preventDefault();
     const game = {
       creatorUserId: this.state.creatorUserId,
-      joineduserId: this.state.joinedUserId,
+      joinedUserId: this.state.joinedUserId,
       locationId: this.state.locationId,
       duration: this.state.duration,
       courtSize: this.state.courtSize
@@ -39,14 +41,20 @@ export default class GameForm extends Component {
         <form onSubmit={this.state.handleUpdate}>
           <div>
             <label>Choose Court Location:</label>
-            <input
-              type="text"
+            <select
+              type="option"
               value={this.state.locationId}
               required="true"
               className="game-location"
               onChange={this.handleFieldChange}
               id="locationId"
-            />
+            >
+              {this.props.courts.map(e => (
+                <option key={e.id} value={e.id}>
+                  {e.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label>Select:</label>
