@@ -8,6 +8,13 @@ export default Object.create(null, {
       );
     }
   },
+  checkData: {
+    value: collectionAndJsonSyntax => {
+      return fetch(`${settings.remoteURL}/${collectionAndJsonSyntax}`).then(e =>
+        e.json()
+      );
+    }
+  },
   getAllData: {
     value: resource => {
       return fetch(`${settings.remoteURL}/${resource}`).then(e => e.json());

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-// import GeneralManager from "../../modules/GeneralManager";
+import GeneralManager from "../../modules/GeneralManager";
 import UsersManager from "../../modules/UsersManager";
 
 export default class Login extends Component {
@@ -54,34 +54,37 @@ export default class Login extends Component {
   };
   signUpUser = e => {
     e.preventDefault();
-
-    UsersManager.getAllData(`users?username=${this.state.username}`).then(
+    GeneralManager.checkData(`users?username=${this.state.username}`).then(
       user => {
-        if (user.length === 0 || user[0].username === this.state.username) {
-          alert(
-            "Sorry, the Ballername is taken. Please try a different Ballername"
-          );
-          return;
-        }
-
-        UsersManager.add({
-          username: this.state.username,
-          password: this.state.password
-        }).then(logNewUser => {
-          sessionStorage.setItem("currentUser", logNewUser.id);
-          console.log("logNewUser", logNewUser.id);
-
-          localStorage.setItem(
-            "credentials",
-            JSON.stringify({
-              username: this.state.username,
-              password: this.state.password
-            })
-          );
+        if (user.length === 0) {
+          GeneralManager.postData("users", {
+            username: this.state.username,
+            password: this.state.password
+          })
+            // .then(e => e.json())
+            .then(logNewUser => {
+              sessionStorage.setItem("currentUser", logNewUser.id);
+              console.log("logNewUser", logNewUser.id);
+              sessionStorage.setItem(
+                "credentials",
+                JSON.stringify({
+                  username: this.state.username,
+                  password: this.state.password
+                })
+              );
+            });
           this.props.history.push("/");
-        });
+        } else if (user.length > 0) {
+          if (this.state.username === user[0].username) {
+            alert(
+              "User name is already registered or no username entered, try again"
+            );
+          }
+          this.props.history.push("/");
+        }
       }
     );
+    this.props.history.push("/");
   };
 
   render() {

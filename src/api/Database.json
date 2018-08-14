@@ -14,6 +14,16 @@
       "username": "Baller4Life",
       "password": "espn",
       "id": 3
+    },
+    {
+      "username": "morgan",
+      "password": "reddit",
+      "id": 4
+    },
+    {
+      "username": "ShuMaker",
+      "password": "baller",
+      "id": 5
     }
   ],
   "courts": [
@@ -38,7 +48,7 @@
       "joinedUserId": "5",
       "locationId": "er",
       "duration": "2pm-3pm",
-      "courtSize": "Half-court",
+      "courtSize": false,
       "id": 1
     },
     {
@@ -46,7 +56,7 @@
       "joinedUserId": "9",
       "locationId": "Aaron",
       "duration": "COKE",
-      "courtSize": "Half-court",
+      "courtSize": true,
       "id": 2
     }
   ],

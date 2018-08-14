@@ -73,7 +73,7 @@ export default class ApplicationViews extends Component {
   //   this.setState(stateToChange);
   // };
 
-  isAuthenticated = () => localStorage.getItem("credentials") !== null;
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   componentDidMount() {
     const _state = {};
@@ -226,8 +226,6 @@ export default class ApplicationViews extends Component {
       }
      }}
     /> */}
-        ​
-        <Route path="/login" component={Login} />
       </React.Fragment>
     );
   }
