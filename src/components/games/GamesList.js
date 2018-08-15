@@ -12,8 +12,8 @@ export default class GamesList extends Component {
     locationId: "",
     duration: "",
     courtSize: "",
-    id: "",
-    courts: this.props.courts
+    locations: this.props.locations,
+    users: this.props.users
   };
 
   deleteGame = gameID => {

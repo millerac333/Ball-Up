@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import CourtsManager from "../../modules/CourtsManager";
-import { Field, Control, Button, Input, Label, Select } from "bloomer";
 
 export default class CourtForm extends Component {
   // Set initial state
   state = {
-    name: "",
+    nameCourt: "",
     address: "",
     hours: "",
-    courtType: ""
+    typeCourt: ""
   };
 
   // Update state whenever an input field is edited
@@ -20,24 +19,24 @@ export default class CourtForm extends Component {
 
   addCourt = e => {
     e.preventDefault();
-    const courts = {
-      name: this.state.courtName,
+    const location = {
+      nameCourt: this.state.courtName,
       address: this.state.address,
       hours: this.state.hours,
-      courtType: this.state.courtType
+      typeCourt: this.state.courtType
     };
-    CourtsManager.add(courts).then(() => {
-      this.props.history.push("/courts");
+    CourtsManager.add(location).then(() => {
+      this.props.history.push("/locations");
     });
   };
 
   render() {
     return (
       <React.Fragment>
-        <Field>
-          <Label> Court's Name:</Label>
-          <Control>
-            <Input
+        <form onSubmit={this.addCourt} className="court-form">
+          <div>
+            <label> Court's Name:</label>
+            <input
               type="text"
               placeholder="name"
               required="true"
@@ -45,12 +44,10 @@ export default class CourtForm extends Component {
               onChange={this.handleFieldChange}
               id="courtName"
             />
-          </Control>
-        </Field>
-        <Field>
-          <Label>Address:</Label>
-          <Control>
-            <Input
+          </div>
+          <div>
+            <label>Address:</label>
+            <input
               type="text"
               placeholder="address"
               required="true"
@@ -58,12 +55,10 @@ export default class CourtForm extends Component {
               onChange={this.handleFieldChange}
               id="address"
             />
-          </Control>
-        </Field>
-        <Field>
-          <Label>Hours of Operation:</Label>
-          <Control>
-            <Input
+          </div>
+          <div>
+            <label>Hours of Operation:</label>
+            <input
               type="text"
               placeholder="EX: 24hr OR 8AM-8PM"
               required="true"
@@ -71,27 +66,28 @@ export default class CourtForm extends Component {
               onChange={this.handleFieldChange}
               id="hours"
             />
-          </Control>
-        </Field>
-        <Field>
-          <Label>Select:</Label>
-          <Control>
-            <Select>
-              <option href="courtType">Outdoor</option>
-              <option href="courtType">Indoor/Gym</option>
-            </Select>
-          </Control>
-        </Field>
-        <Field>
-          <Control>
-            <Button isColor="primary" type="submit" onClick={this.addCourt}>
-              Add Court
-            </Button>
-          </Control>
+          </div>
+          <div>
+            <label>Select:</label>
+            <select
+              type="text"
+              placeholder="Outdoor"
+              required="true"
+              className="court-courtType"
+              onChange={this.handleFieldChange}
+              id="courtType"
+            >
+              <option>Outdoor</option>
+              <option>Indoor/Gym</option>
+            </select>
+          </div>
+          <div>
+            <button type="submit">Add Court</button>
+          </div>
           {/* <Control>
             <Button isLink={this.props.history.push("/courts/")}>Cancel</Button>
           </Control> */}
-        </Field>
+        </form>
       </React.Fragment>
     );
   }

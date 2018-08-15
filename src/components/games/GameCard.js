@@ -13,7 +13,7 @@ export default class GameCard extends Component {
 
   render() {
     console.log("PROPS", this.props.games);
-    console.log("creatorid", this.props.games.creatorUserId);
+    console.log("creatorId", this.props.games.creatorUserId);
     return (
       <React.Fragment>
         <div className="games-card">
@@ -32,10 +32,11 @@ export default class GameCard extends Component {
           </div>
           <div className="games-card-createdUserId">
             <label htmlFor="games-card-createdUserId">Game Created By</label>
+            {this.props.games.creatorUserId}
           </div>
           <div className="games-card-createdBUserId">
             <label htmlFor="games-card-joinedUSerId">Game Joined By</label>
-            {this.props.games.joinedBallerId}
+            {this.props.games.joinedUserId}
           </div>
           <div>
             <Link

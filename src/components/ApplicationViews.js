@@ -21,7 +21,7 @@ import EditGame from "./games/GameEdit";
 export default class ApplicationViews extends Component {
   state = {
     users: [],
-    courts: [],
+    locations: [],
     gamesJoined: []
   };
 
@@ -83,7 +83,7 @@ export default class ApplicationViews extends Component {
       .then(() => UsersManager.all())
       .then(users => (_state.users = users))
       .then(() => CourtsManager.all())
-      .then(courts => (_state.courts = courts))
+      .then(locations => (_state.locations = locations))
       .then(() => {
         this.setState(_state);
       });
@@ -96,7 +96,7 @@ export default class ApplicationViews extends Component {
           path="/"
           render={props => {
             if (this.isAuthenticated()) {
-              return <CourtsList courts={this.state.courts} {...props} />;
+              return <CourtsList locations={this.state.locations} />;
             } else {
               return <Login {...props} />;
             }
@@ -105,9 +105,9 @@ export default class ApplicationViews extends Component {
         {
           <Route
             exact
-            path="/courts"
+            path="/locations"
             render={props => {
-              return <CourtsList courts={this.state.courts} />;
+              return <CourtsList locations={this.state.locations} />;
             }}
           />
         }
@@ -124,7 +124,7 @@ export default class ApplicationViews extends Component {
      }}
     /> */}
         <Route
-          path="/courts/new"
+          path="/locations/new"
           render={props => {
             return (
               <CourtForm
@@ -166,7 +166,7 @@ export default class ApplicationViews extends Component {
               <GameForm
                 {...props}
                 addGame={this.addGame}
-                courts={this.state.courts}
+                locations={this.state.locations}
               />
             );
           }}
@@ -178,7 +178,7 @@ export default class ApplicationViews extends Component {
               <EditGame
                 {...props}
                 games={props.location.state.games}
-                courts={this.state.courts}
+                locations={this.state.locations}
               />
             );
           }}

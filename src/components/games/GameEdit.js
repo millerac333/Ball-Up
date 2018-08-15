@@ -8,8 +8,8 @@ export default class EditGame extends Component {
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
     courtSize: this.props.games.courtSize,
-    courts: this.props.courts,
-    name: this.props.courts.name
+    locations: this.props.locations,
+    nameCourt: this.props.locations.nameCourt
   };
 
   // Update state whenever an input field is edited
@@ -49,22 +49,20 @@ export default class EditGame extends Component {
               onChange={this.handleFieldChange}
               id="locationId"
             >
-              {this.props.courts.map(e => (
+              {this.props.locations.map(e => (
                 <option key={e.id} value={e.id}>
-                  {e.name}
+                  {e.nameCourt}
                 </option>
               ))}
             </select>
           </div>
-          {/* </select>
-          </div> */}
           <div>
             <label>Select:</label>
             <select
               type="option"
               className="game-edit-location"
               onChange={this.handleFieldChange}
-              id="joinedBallerId"
+              id="joinedUserId"
               value={this.state.joinedUserId}
             >
               <option>0</option>

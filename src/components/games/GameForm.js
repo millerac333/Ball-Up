@@ -49,9 +49,9 @@ export default class GameForm extends Component {
               onChange={this.handleFieldChange}
               id="locationId"
             >
-              {this.props.courts.map(e => (
+              {this.props.locations.map(e => (
                 <option key={e.id} value={e.id}>
-                  {e.name}
+                  {e.nameCourt}
                 </option>
               ))}
             </select>

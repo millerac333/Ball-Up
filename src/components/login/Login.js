@@ -10,9 +10,9 @@ export default class Login extends Component {
     password: ""
   };
   // Update state whenever an input field is edited
-  handleFieldChange = e => {
+  handleFieldChange = evt => {
     const stateToChange = {};
-    stateToChange[e.target.id] = e.target.value;
+    stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
   // Simplistic handler for login submit

@@ -29,43 +29,55 @@
       "username": "Jenna",
       "password": "coke",
       "id": 6
+    },
+    {
+      "username": "sadie",
+      "password": "dog",
+      "id": 7
     }
   ],
-  "courts": [
+  "locations": [
     {
-      "name": "Test Location Name 1",
+      "nameCourt": "Test Location Name 1",
       "address": "111 Test Location Address",
       "hours": "8AM-8PM",
-      "type": true,
+      "typeCourt": true,
       "id": 1
     },
     {
-      "name": "Test Location Name 2",
+      "nameCourt": "Test Location Name 2",
       "address": "222 Test Location Address",
       "hours": "8AM-8PM",
-      "type": false,
+      "typeCourt": true,
       "id": 2
     },
     {
-      "name": "Bear Court ",
+      "nameCourt": "Bear Court ",
       "address": "333 222 st",
       "hours": "4am -6pm",
-      "courtType": "",
+      "typeCourt": true,
       "id": 3
     },
     {
-      "name": "Wolf court ",
+      "nameCourt": "Wolf court ",
       "address": "66e33 street ",
       "hours": "4-8",
-      "courtType": "",
+      "typeCourt": false,
       "id": 4
+    },
+    {
+      "nameCourt": "Sadies Court",
+      "address": "956 Beech Bend Drive",
+      "hours": "3pm-6pm",
+      "typeCourt": false,
+      "id": 5
     }
   ],
   "games": [
     {
       "creatorUserId": "1",
       "joinedUserId": "5",
-      "locationId": "4",
+      "locationId": 4,
       "duration": "2pm-3pm",
       "courtSize": false,
       "id": 1
@@ -73,26 +85,10 @@
     {
       "creatorUserId": "1",
       "joinedUserId": "9",
-      "locationId": "Aaron",
+      "locationId": 3,
       "duration": "COKE",
       "courtSize": true,
       "id": 2
-    },
-    {
-      "creatorUserId": "",
-      "joineduserId": "",
-      "locationId": "4",
-      "duration": "COKE",
-      "courtSize": "Half-court",
-      "id": 3
-    },
-    {
-      "creatorUserId": "",
-      "joinedUserId": "",
-      "locationId": "3",
-      "duration": "COKE",
-      "courtSize": "Half-court",
-      "id": 4
     }
   ],
   "joinedGames": [

@@ -5,35 +5,34 @@ import { Link } from "react-router-dom";
 
 export default class CourtsList extends Component {
   state = {
-    courts: this.props.courts,
-    name: "",
+    locations: this.props.locations,
+    nameCourt: "",
     address: "",
     hours: "",
-    type: "",
-    id: ""
+    typeCourt: ""
   };
 
   passCourtsList() {
-    CourtsManager.all(this.props.courts).then(() => {
-      this.props.history.push("/courts");
+    CourtsManager.all(this.props.locations).then(() => {
+      this.props.history.push("/locations");
     });
   }
 
   render() {
-    console.log(this.state.courts);
+    console.log(this.state.locations);
     return (
       <React.Fragment>
         <Link
           className="add-court"
           to={{
-            pathname: "/courts/new"
+            pathname: "/locations/new"
           }}
         >
           Add Court
         </Link>
-        <section className="courts">
-          {this.props.courts.map(court => (
-            <CourtCard key={court.id} court={court} {...this.props} />
+        <section className="locations">
+          {this.props.locations.map(location => (
+            <CourtCard key={location.id} location={location} {...this.props} />
           ))}
         </section>
       </React.Fragment>
