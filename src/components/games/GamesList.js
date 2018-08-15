@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GameCard from "./GameCard";
 import GeneralManager from "../../modules/GeneralManager";
-import GamesManager from "../../modules/GamesManager";
+// import GamesManager from "../../modules/GamesManager";
 import { Link } from "react-router-dom";
 
 export default class GamesList extends Component {
@@ -29,9 +29,11 @@ export default class GamesList extends Component {
   };
 
   componentDidMount() {
-    GamesManager.all().then(games => {
-      this.setState({ games: games });
-    });
+    fetch("http://localhost:3333/games?_expand=location")
+      .then(e => e.json())
+      .then(games => {
+        this.setState({ games: games });
+      });
   }
   render() {
     console.log(this.state.games);

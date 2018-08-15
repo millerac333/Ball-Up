@@ -75,7 +75,7 @@
   ],
   "games": [
     {
-      "creatorUserId": "1",
+      "creatorUserId": 3,
       "joinedUserId": "5",
       "locationId": 4,
       "duration": "2pm-3pm",
@@ -83,7 +83,7 @@
       "id": 1
     },
     {
-      "creatorUserId": "1",
+      "creatorUserId": 3,
       "joinedUserId": "9",
       "locationId": 3,
       "duration": "COKE",
@@ -99,7 +99,7 @@
     },
     {
       "joinedGameId": "2",
-      "joinedBallerId": "1",
+      "joinedUserId": "1",
       "id": 2
     }
   ]
