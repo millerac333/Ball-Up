@@ -143,6 +143,7 @@ export default class ApplicationViews extends Component {
               <GamesList
                 {...props}
                 deleteGame={this.deleteGame}
+                users={this.state.users}
                 // games={this.state.games}
               />
             );
@@ -221,23 +222,23 @@ export default class ApplicationViews extends Component {
      }}
     /> */}
         {/* <Route
-     exact
-     path="/users"
-     render={props => {
-      if (this.isAuthenticated()) {
-       return (
-        <UsersList
-         deleteUser={this.deleteUser}
-         games={this.state.games}
-         gamesJoined={this.state.gamesJoined}
-         courts={this.state.courts}
-        />
-       );
-      } else {
-       return <Redirect to="/Login" />;
-      }
-     }}
-    /> */}
+          exact
+          path="/users"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return (
+                <UsersList
+                  deleteUser={this.deleteUser}
+                  games={this.state.games}
+                  gamesJoined={this.state.gamesJoined}
+                  courts={this.state.courts}
+                />
+              );
+            } else {
+              return <Redirect to="/Login" />;
+            }
+          }}
+        /> */}
       </React.Fragment>
     );
   }

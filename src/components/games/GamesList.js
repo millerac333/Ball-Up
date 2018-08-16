@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default class GamesList extends Component {
   state = {
     games: [],
-    creatorUserId: "",
+    userId: "",
     joinedUserId: "",
     locationId: "",
     duration: "",
@@ -27,13 +27,22 @@ export default class GamesList extends Component {
         });
       });
   };
-
+  // "http://localhost:3333/games?_expand=user"
   componentDidMount() {
     fetch("http://localhost:3333/games?_expand=location")
       .then(e => e.json())
+      // .then(
+      //   fetch("http://localhost:3333/games?_expand=user")
+      //     .then(e => e.json())
       .then(games => {
         this.setState({ games: games });
       });
+    // .then(
+    //   fetch("http://localhost:3333/games?_expand=user")
+    // .then(e => e.json())
+    // .then(games => {
+    //   this.setState({ games: games });
+    // })
   }
   render() {
     console.log(this.state.games);

@@ -5,7 +5,7 @@ import GamesManager from "../../modules/GamesManager";
 export default class GameForm extends Component {
   state = {
     // games: this.props.games,
-    creatorUserId: "",
+    userId: "",
     joinedUserId: "",
     locationId: "",
     duration: "",
@@ -24,7 +24,7 @@ export default class GameForm extends Component {
   addGame = e => {
     e.preventDefault();
     const game = {
-      creatorUserId: this.state.creatorUserId,
+      userId: this.state.userId,
       joinedUserId: this.state.joinedUserId,
       locationId: this.state.locationId,
       duration: this.state.duration,

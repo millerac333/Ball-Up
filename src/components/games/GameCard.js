@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class GameCard extends Component {
   state = {
     games: this.props.games,
-    creatorUserId: this.props.games.creatorUserId,
+    userId: this.props.games.userId,
     joinedUserId: this.props.games.joinedUserId,
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
@@ -13,20 +13,13 @@ export default class GameCard extends Component {
 
   render() {
     console.log("PROPS", this.props.games);
-    console.log("creatorId", this.props.games.creatorUserId);
+    console.log("userId", this.props.games.userId);
     return (
       <React.Fragment>
         <div className="games-card">
           <div className="games-card-body">
             <div className="games-card-courtLocation">
               {this.props.games.location.nameCourt}
-              {/* {this.props.games
-                .filter(game => game.locationId === locations.id)
-                .map(location => (
-                  <h5 key={location.id} value={location.nameCourt}>
-                    {location.nameCourt}
-                  </h5>
-                ))} */}
             </div>
             <div className="games-card-duraton">
               <label htmlFor="games-card-duration">Duration of Game</label>
@@ -36,12 +29,12 @@ export default class GameCard extends Component {
             <div className="games-card-courtSize">
               {this.props.games.courtSize}
             </div>
-            <div className="games-card-createdUserId">
-              <label htmlFor="games-card-createdUserId">Game Created By</label>
-              {this.props.games.creatorUserId}
+            <div className="games-card-userId">
+              <label htmlFor="games-card-userId">Game Created By</label>
+              {/* {this.props.games.user.username} */}
             </div>
-            <div className="games-card-createdBUserId">
-              <label htmlFor="games-card-joinedUSerId">Game Joined By</label>
+            <div className="games-card-joinedUserId">
+              <label htmlFor="games-card-joinedUserId">Game Joined By</label>
               {this.props.games.joinedUserId}
             </div>
             <div>

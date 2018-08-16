@@ -3,7 +3,7 @@ import GeneralManager from "../../modules/GeneralManager";
 
 export default class EditGame extends Component {
   state = {
-    creatorUserId: this.props.games.creatorUserId,
+    userId: this.props.games.userId,
     joinedUserId: this.props.games.joinedUserId,
     locationId: this.props.games.locationId,
     duration: this.props.games.duration,
@@ -22,7 +22,7 @@ export default class EditGame extends Component {
   handleUpdate = e => {
     e.preventDefault();
     const updatedGame = {
-      creatorUserId: this.state.creatorUserId,
+      userId: this.state.userId,
       joinedUserId: this.state.joinedUserId,
       locationId: this.state.locationId,
       duration: this.state.duration,
