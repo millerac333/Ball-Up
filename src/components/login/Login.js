@@ -117,10 +117,10 @@ export default class Login extends Component {
           </div>
 
           <button
-            type="submit"
+            type="button"
             className="btn btn-primary"
-            onSubmit={this.handleLogin}
-            // onClick={e => this.handleLogin(e)}
+            // onSubmit={this.handleLogin}
+            onClick={e => this.handleLogin(e)}
           >
             Log-In
           </button>

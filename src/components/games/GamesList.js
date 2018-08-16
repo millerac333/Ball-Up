@@ -27,23 +27,21 @@ export default class GamesList extends Component {
         });
       });
   };
-  // "http://localhost:3333/games?_expand=user"
   componentDidMount() {
-    fetch("http://localhost:3333/games?_expand=location")
+    fetch("http://localhost:3333/games?_expand=location&_expand=user")
       .then(e => e.json())
-      // .then(
-      //   fetch("http://localhost:3333/games?_expand=user")
-      //     .then(e => e.json())
       .then(games => {
-        this.setState({ games: games });
+        console.log("before split", games);
+        let userGames = sessionStorage.getItem("currentUser");
+        let createdGames = games.filter(game => +game.userID === game.user.id);
+        let otherGames = games.filter(game => +game.userID !== game.user.id);
+        console.log("new user id state", userGames);
+        console.log("created games", createdGames);
+        console.log("other games", otherGames);
+        this.setState({ games: games, userId: userGames });
       });
-    // .then(
-    //   fetch("http://localhost:3333/games?_expand=user")
-    // .then(e => e.json())
-    // .then(games => {
-    //   this.setState({ games: games });
-    // })
   }
+
   render() {
     console.log(this.state.games);
     return (

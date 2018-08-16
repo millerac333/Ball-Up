@@ -4,6 +4,7 @@ import GamesManager from "../../modules/GamesManager";
 
 export default class GameForm extends Component {
   state = {
+    // users: this.props.users,
     // games: this.props.games,
     userId: "",
     joinedUserId: "",
@@ -13,13 +14,19 @@ export default class GameForm extends Component {
     id: ""
     // courts: this.props.courts
   };
-  //html select dropdowns
+
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
+
+  // componentDidMount() {
+  //   let userGames = sessionStorage.getItem("currentUser");
+  //   this.setState({ userId: userGames });
+  //   console.log("new user id state", userGames);
+  // }
 
   addGame = e => {
     e.preventDefault();

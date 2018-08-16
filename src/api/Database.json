@@ -34,6 +34,16 @@
       "username": "sadie",
       "password": "dog",
       "id": 7
+    },
+    {
+      "username": "Robert",
+      "password": "new",
+      "id": 8
+    },
+    {
+      "username": "Shuuu",
+      "password": "Shoe",
+      "id": 9
     }
   ],
   "locations": [
@@ -71,6 +81,13 @@
       "hours": "3pm-6pm",
       "typeCourt": false,
       "id": 5
+    },
+    {
+      "nameCourt": "SH?U",
+      "address": "where do you live ",
+      "hours": "anywhere ",
+      "typeCourt": "Outdoor",
+      "id": 6
     }
   ],
   "games": [
@@ -89,6 +106,14 @@
       "duration": "COKE",
       "courtSize": true,
       "id": 2
+    },
+    {
+      "userId": "9",
+      "joinedUserId": "",
+      "locationId": "3",
+      "duration": "5555",
+      "courtSize": "Half-court",
+      "id": 4
     }
   ],
   "joinedGames": [
