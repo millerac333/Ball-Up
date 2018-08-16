@@ -27,7 +27,7 @@ export default class GameCard extends Component {
               <label htmlFor="games-card-courtSize">Court Size</label>
             </div>
             <div className="games-card-courtSize">
-              {this.props.games.courtSize}
+              {this.props.games.courtSize ? "Full-Court" : "Half-Court"}
             </div>
             <div className="games-card-userId">
               <label htmlFor="games-card-userId">Game Created By</label>
