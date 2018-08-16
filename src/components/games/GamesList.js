@@ -33,8 +33,8 @@ export default class GamesList extends Component {
       .then(games => {
         console.log("before split", games);
         let userGames = sessionStorage.getItem("currentUser");
-        let createdGames = games.filter(game => +game.userID === game.user.id);
-        let otherGames = games.filter(game => +game.userID !== game.user.id);
+        let createdGames = games.filter(game => game.userId === game.user.id);
+        let otherGames = games.filter(game => game.userId !== game.user.id);
         console.log("new user id state", userGames);
         console.log("created games", createdGames);
         console.log("other games", otherGames);

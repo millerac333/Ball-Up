@@ -114,6 +114,14 @@
       "duration": "5555",
       "courtSize": "Half-court",
       "id": 4
+    },
+    {
+      "userId": "",
+      "joinedUserId": "",
+      "locationId": "4",
+      "duration": "123456",
+      "courtSize": "",
+      "id": 5
     }
   ],
   "joinedGames": [
