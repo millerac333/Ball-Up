@@ -22,11 +22,11 @@ export default class GameForm extends Component {
     this.setState(stateToChange);
   };
 
-  // componentDidMount() {
-  //   let userGames = sessionStorage.getItem("currentUser");
-  //   this.setState({ userId: userGames });
-  //   console.log("new user id state", userGames);
-  // }
+  componentWillReceiveProps() {
+    let userGames = sessionStorage.getItem("currentUser");
+    this.setState({ userId: userGames });
+    console.log("new user id state", userGames);
+  }
 
   addGame = e => {
     e.preventDefault();

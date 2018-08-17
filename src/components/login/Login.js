@@ -28,7 +28,7 @@ export default class Login extends Component {
           alert("The password you entered is incorrect; please try again");
           return;
         } else if (
-          user[0].ballername === this.state.username &&
+          user[0].username === this.state.username &&
           user[0].password === this.state.password
         ) {
           sessionStorage.setItem("currentUser", user[0].id);

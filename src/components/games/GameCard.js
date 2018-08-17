@@ -31,7 +31,7 @@ export default class GameCard extends Component {
             </div>
             <div className="games-card-userId">
               <label htmlFor="games-card-userId">Game Created By</label>
-              {/* {this.props.games.user.username} */}
+              {this.props.games.user.username}
             </div>
             <div className="games-card-joinedUserId">
               <label htmlFor="games-card-joinedUserId">Game Joined By</label>
