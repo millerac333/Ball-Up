@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "./Login.css";
 import GeneralManager from "../../modules/GeneralManager";
-// import UsersManager from "../../modules/UsersManager";
 
 export default class Login extends Component {
-  // Set initial state
   state = {
     username: "",
     password: ""
@@ -51,6 +49,7 @@ export default class Login extends Component {
     );
     this.props.history.push("/");
   };
+
   signUpUser = e => {
     e.preventDefault();
     GeneralManager.checkData(`users?username=${this.state.username}`).then(
@@ -119,7 +118,6 @@ export default class Login extends Component {
           <button
             type="button"
             className="btn btn-primary"
-            // onSubmit={this.handleLogin}
             onClick={e => this.handleLogin(e)}
           >
             Log-In

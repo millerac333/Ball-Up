@@ -19,7 +19,7 @@ export default class CourtsList extends Component {
   }
 
   render() {
-    console.log(this.state.locations);
+    console.log("locations state after render", this.state.locations);
     return (
       <React.Fragment>
         <Link

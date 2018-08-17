@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import GameCard from "./GameCard";
 import GeneralManager from "../../modules/GeneralManager";
-// import GamesManager from "../../modules/GamesManager";
 import { Link } from "react-router-dom";
 
 export default class GamesList extends Component {
@@ -27,11 +26,13 @@ export default class GamesList extends Component {
         });
       });
   };
+
   // componentWillMount() {
   //   let userGames = sessionStorage.getItem("currentUser");
   //   this.setState({ userId: userGames });
   //   console.log("new user id state", userGames);
   // }
+
   componentDidMount() {
     fetch("http://localhost:3333/games?_expand=location&_expand=user")
       .then(e => e.json())
@@ -48,7 +49,7 @@ export default class GamesList extends Component {
   }
 
   render() {
-    console.log(this.state.games);
+    console.log("state of games after rendered", this.state.games);
     return (
       <React.Fragment>
         <Link

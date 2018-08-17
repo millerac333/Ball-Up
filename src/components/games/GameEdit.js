@@ -35,7 +35,6 @@ export default class EditGame extends Component {
   };
 
   render() {
-    // console.log(this.props.location.state.games);
     return (
       <React.Fragment>
         <form onSubmit={this.handleUpdate}>

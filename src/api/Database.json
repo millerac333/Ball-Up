@@ -108,20 +108,20 @@
       "id": 2
     },
     {
-      "userId": "9",
-      "joinedUserId": "",
-      "locationId": "3",
-      "duration": "5555",
-      "courtSize": "Half-court",
-      "id": 4
+      "userId": 4,
+      "joinedUserId": "2",
+      "locationId": 2,
+      "duration": "COKE",
+      "courtSize": true,
+      "id": 2
     },
     {
-      "userId": "",
-      "joinedUserId": "",
-      "locationId": "4",
-      "duration": "123456",
-      "courtSize": "",
-      "id": 5
+      "userId": 4,
+      "joinedUserId": "1",
+      "locationId": 4,
+      "duration": "COKE",
+      "courtSize": true,
+      "id": 2
     }
   ],
   "joinedGames": [

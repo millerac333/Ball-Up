@@ -4,6 +4,7 @@ export default class CourtCard extends Component {
   state = {
     locations: this.props.location
   };
+
   render() {
     return (
       <React.Fragment>

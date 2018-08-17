@@ -4,15 +4,12 @@ import GamesManager from "../../modules/GamesManager";
 
 export default class GameForm extends Component {
   state = {
-    // users: this.props.users,
-    // games: this.props.games,
     userId: "",
     joinedUserId: "",
     locationId: "",
     duration: "",
     courtSize: "",
     id: ""
-    // courts: this.props.courts
   };
 
   // Update state whenever an input field is edited
@@ -37,6 +34,7 @@ export default class GameForm extends Component {
       duration: this.state.duration,
       courtSize: this.state.courtSize
     };
+
     GamesManager.add(game).then(() => {
       this.props.history.push("/games");
     });

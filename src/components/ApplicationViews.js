@@ -4,19 +4,11 @@ import CourtsList from "./courts/CourtsList";
 import CourtForm from "./courts/CourtForm";
 import GamesList from "./games/GamesList";
 import GameForm from "./games/GameForm";
-// import GameCard from "./games/GameCard";
-// import GamesJoinedList from "./games-joined/GamesJoinedList";
-// import GameJoinedDetail from "./games-joined/GameJoinedDetail";
 import GamesManager from "../modules/GamesManager";
-// import JoinedGamesManager from "../modules/JoinedGamesManager";
 import UsersManager from "../modules//UsersManager";
 import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
 import EditGame from "./games/GameEdit";
-// import GeneralManager from "../modules/GeneralManager";
-// import settings from "../settings";
-
-// dropdown, booleans, submit on form does not push back
 
 export default class ApplicationViews extends Component {
   state = {
