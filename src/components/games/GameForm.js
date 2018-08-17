@@ -12,18 +12,18 @@ export default class GameForm extends Component {
     id: ""
   };
 
+  componentDidMount() {
+    let userGames = sessionStorage.getItem("currentUser");
+    this.setState({ userId: userGames });
+    console.log("new user id state", typeof userGames);
+  }
+
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
-
-  componentWillReceiveProps() {
-    let userGames = sessionStorage.getItem("currentUser");
-    this.setState({ userId: userGames });
-    console.log("new user id state", userGames);
-  }
 
   addGame = e => {
     e.preventDefault();

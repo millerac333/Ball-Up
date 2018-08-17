@@ -22,19 +22,19 @@ export default class GameCard extends Component {
               {this.props.games.location.nameCourt}
             </div>
             <div className="games-card-duraton">
-              <label htmlFor="games-card-duration">Duration of Game</label>
+              <label htmlFor="games-card-duration">Duration of Game: </label>
               {this.props.games.duration}
-              <label htmlFor="games-card-courtSize">Court Size</label>
+              <label htmlFor="games-card-courtSize">Court Size: </label>
             </div>
             <div className="games-card-courtSize">
               {this.props.games.courtSize ? "Full-Court" : "Half-Court"}
             </div>
             <div className="games-card-userId">
-              <label htmlFor="games-card-userId">Game Created By</label>
+              <label htmlFor="games-card-userId">Game Created By: </label>
               {this.props.games.user.username}
             </div>
             <div className="games-card-joinedUserId">
-              <label htmlFor="games-card-joinedUserId">Game Joined By</label>
+              <label htmlFor="games-card-joinedUserId">Game Joined By: </label>
               {this.props.games.joinedUserId}
             </div>
             <div>
