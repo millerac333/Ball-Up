@@ -4,9 +4,9 @@ import CourtsList from "./courts/CourtsList";
 import CourtForm from "./courts/CourtForm";
 import GamesList from "./games/GamesList";
 import GameForm from "./games/GameForm";
-// import GamesManager from "../modules/GamesManager";
-// import UsersManager from "../modules//UsersManager";
-// import CourtsManager from "../modules/CourtsManager";
+import GamesManager from "../modules/GamesManager";
+import UsersManager from "../modules//UsersManager";
+import CourtsManager from "../modules/CourtsManager";
 import Login from "./login/Login";
 import EditGame from "./games/GameEdit";
 
@@ -67,19 +67,19 @@ export default class ApplicationViews extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
-  // componentDidMount() {
-  //   const _state = {};
-  //   // GamesManager.listWithCaretaker()
-  //   GamesManager.all()
-  //     .then(games => (_state.games = games))
-  //     .then(() => UsersManager.all())
-  //     .then(users => (_state.users = users))
-  //     .then(() => CourtsManager.all())
-  //     .then(locations => (_state.locations = locations))
-  //     .then(() => {
-  //       this.setState(_state);
-  //     });
-  // }
+  componentDidMount() {
+    const _state = {};
+    // GamesManager.listWithCaretaker()
+    GamesManager.all()
+      .then(games => (_state.games = games))
+      .then(() => UsersManager.all())
+      .then(users => (_state.users = users))
+      .then(() => CourtsManager.all())
+      .then(locations => (_state.locations = locations))
+      .then(() => {
+        this.setState(_state);
+      });
+  }
   render() {
     return (
       <React.Fragment>
